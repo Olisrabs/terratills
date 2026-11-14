@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  /* ======================================================== */
+  /* TERRATILLS OFFICIAL COLOR HIERARCHY                     */
+  /* 50% Deep teal: #003D37                                   */
+  /* 20% Harvest gold: #FFC900                                */
+  /* 15% White: #FFFFFF                                       */
+  /*  8% Soft sage: #E4EFDF                                   */
+  /*  5% Green: #559B45                                       */
+  /*  2% Charcoal: #10271B                                    */
+  /* ======================================================== */
+  --color-brand-teal: #003D37;
+  --color-brand-gold: #FFC900;
+  --color-brand-white: #FFFFFF;
+  --color-brand-sage: #E4EFDF;
+  --color-brand-green: #559B45;
+  --color-brand-charcoal: #10271B;
+
+  /* Theme mappings for existing semantic classes */
+  --color-forest: #003D37;
+  --color-forest-50: #E4EFDF;
+  --color-forest-100: #d5e7d0;
+  --color-forest-700: #00342f;
+  --color-forest-800: #002824;
+  --color-forest-900: #10271B;
+  --color-leaf: #559B45;
+  --color-surface: #F8FAFC;
+  
+  --radius-3xl: 24px;
+  --radius-4xl: 32px;
+  
+  --shadow-card: 0 8px 24px -4px rgba(0, 61, 55, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-nav: 0 -4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-float: 0 16px 36px -6px rgba(0, 61, 55, 0.14), 0 4px 12px -2px rgba(0, 0, 0, 0.06);
+
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Custom scrollbar hiding */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Base custom styles */
+body {
+  background-color: #F8FAF8;
+  color: #10271B;
+  font-family: var(--font-sans);
+}
+
+/* Custom animations & transitions */
+.transition-smooth {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom gradient helpers */
+.bg-forest-gradient {
+  background: linear-gradient(135deg, #003D37 0%, #002B27 60%, #10271B 100%);
+}
+
+.bg-emerald-gradient {
+  background: linear-gradient(135deg, #559B45 0%, #003D37 100%);
+}
+
+/* Floating organic animations for landing hero */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-22px) rotate(8deg) scale(1.05);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(20px) rotate(-10deg) scale(0.96);
+  }
+}
+
+@keyframes float-sway {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  33% {
+    transform: translate(14px, -16px) rotate(5deg);
+  }
+  66% {
+    transform: translate(-12px, -8px) rotate(-6deg);
+  }
+}
+
+@keyframes float-drift {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  50% {
+    transform: translate(-18px, -24px) rotate(-10deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.14);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 9s ease-in-out infinite;
+}
+
+.animate-float-sway {
+  animation: float-sway 11s ease-in-out infinite;
+}
+
+.animate-float-drift {
+  animation: float-drift 13s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 5s ease-in-out infinite;
+}

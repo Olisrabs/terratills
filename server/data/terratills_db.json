@@ -1,0 +1,1343 @@
+{
+  "users": [
+    {
+      "id": "user_1",
+      "name": "Alhaji Musa Danladi",
+      "displayName": "Musa Danladi",
+      "email": "musa.danladi@terratills.ng",
+      "phone": "+234 803 456 7890",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+      "badge": "Verified Agro-Pro 🌿",
+      "bio": "Commercial grain producer, mechanized farming advocate, and agricultural fleet owner with 15+ years experience in the North-West and Middle Belt corridors.",
+      "location": {
+        "state": "Kaduna",
+        "lga": "Zaria",
+        "town": "Zaria City",
+        "country": "Nigeria"
+      },
+      "memberSince": "March 2023",
+      "rating": 4.9,
+      "reviewCount": 38,
+      "completedBookingsCount": 52,
+      "responseRate": "98%",
+      "responseTime": "< 30 mins",
+      "verification": {
+        "identity": {
+          "status": "approved",
+          "verifiedAt": "2023-04-10"
+        },
+        "phone": {
+          "status": "approved",
+          "verifiedAt": "2023-03-15"
+        },
+        "email": {
+          "status": "approved",
+          "verifiedAt": "2023-03-15"
+        },
+        "machineryOwnership": {
+          "status": "approved",
+          "verifiedAt": "2023-05-22"
+        },
+        "farmlandAuthority": {
+          "status": "under_review",
+          "submittedAt": "2026-10-18"
+        }
+      }
+    },
+    {
+      "id": "user_2",
+      "name": "Adesola Olawale",
+      "displayName": "Engr. Adesola Ola",
+      "email": "adesola.olawale@greenroots.ng",
+      "phone": "+234 802 334 9911",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200",
+      "badge": "Master Agronomist 🌱",
+      "bio": "Registered agricultural engineer and agroforestry estate developer managing 300+ hectares across Oyo and Ogun states.",
+      "location": {
+        "state": "Oyo",
+        "lga": "Iseyin",
+        "town": "Iseyin Valley",
+        "country": "Nigeria"
+      },
+      "memberSince": "January 2024",
+      "rating": 4.95,
+      "reviewCount": 44,
+      "completedBookingsCount": 61,
+      "responseRate": "100%",
+      "responseTime": "< 15 mins",
+      "verification": {
+        "identity": {
+          "status": "approved",
+          "verifiedAt": "2024-01-12"
+        },
+        "phone": {
+          "status": "approved",
+          "verifiedAt": "2024-01-12"
+        },
+        "email": {
+          "status": "approved",
+          "verifiedAt": "2024-01-12"
+        },
+        "farmlandAuthority": {
+          "status": "approved",
+          "verifiedAt": "2024-02-01"
+        }
+      }
+    },
+    {
+      "id": "user_3",
+      "name": "Chidi Emeka Okonkwo",
+      "displayName": "Chidi Okonkwo (Benue Agro-Labour)",
+      "email": "chidi.okonkwo@agrolabour.ng",
+      "phone": "+234 814 772 1045",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=200",
+      "badge": "Vetted Labour Coordinator ⭐",
+      "bio": "Leading agricultural labour contractor in Benue State with seasoned teams experienced in yam mounding, cassava planting, and grain harvesting.",
+      "location": {
+        "state": "Benue",
+        "lga": "Gboko",
+        "town": "Gboko Central",
+        "country": "Nigeria"
+      },
+      "memberSince": "August 2023",
+      "rating": 4.88,
+      "reviewCount": 29,
+      "completedBookingsCount": 37,
+      "responseRate": "95%",
+      "responseTime": "< 1 hour",
+      "verification": {
+        "identity": {
+          "status": "approved",
+          "verifiedAt": "2023-08-20"
+        },
+        "phone": {
+          "status": "approved",
+          "verifiedAt": "2023-08-20"
+        },
+        "email": {
+          "status": "approved",
+          "verifiedAt": "2023-08-20"
+        }
+      }
+    },
+    {
+      "id": "user_4",
+      "name": "Fatima Zahra Bello",
+      "displayName": "Dr. Fatima Bello",
+      "email": "fatima.bello@hortitech.ng",
+      "phone": "+234 809 112 4499",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200",
+      "badge": "Agronomy Trainer 🎓",
+      "bio": "Horticulture specialist, greenhouse designer, and international trainer for commercial tomato, habanero, and bell pepper farming.",
+      "location": {
+        "state": "Plateau",
+        "lga": "Jos South",
+        "town": "Bukuru",
+        "country": "Nigeria"
+      },
+      "memberSince": "May 2024",
+      "rating": 5,
+      "reviewCount": 19,
+      "completedBookingsCount": 24,
+      "responseRate": "99%",
+      "responseTime": "< 20 mins",
+      "verification": {
+        "identity": {
+          "status": "approved",
+          "verifiedAt": "2024-05-10"
+        },
+        "phone": {
+          "status": "approved",
+          "verifiedAt": "2024-05-10"
+        },
+        "email": {
+          "status": "approved",
+          "verifiedAt": "2024-05-10"
+        },
+        "trainingCredential": {
+          "status": "approved",
+          "verifiedAt": "2024-05-25"
+        }
+      }
+    },
+    {
+      "id": "user_1794649502915",
+      "name": "Chukwudi Eze",
+      "displayName": "Chukwudi",
+      "email": "chukwudi@agro.ng",
+      "phone": "+2348011223344",
+      "password": "secretpassword",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200",
+      "badge": "Registered Agro Member 🌿",
+      "bio": "Verified participant in Nigeria agricultural services marketplace.",
+      "location": {
+        "state": "Kaduna",
+        "lga": "Zaria",
+        "town": "Zaria",
+        "country": "Nigeria"
+      },
+      "memberSince": "November 2026",
+      "rating": 5,
+      "reviewCount": 0,
+      "completedBookingsCount": 0,
+      "responseRate": "100%",
+      "responseTime": "< 1 hr",
+      "verification": {
+        "identity": {
+          "status": "pending",
+          "submittedAt": "2026-11-14T09:45:02.952Z"
+        },
+        "phone": {
+          "status": "approved",
+          "verifiedAt": "2026-11-14T09:45:02.952Z"
+        },
+        "email": {
+          "status": "approved",
+          "verifiedAt": "2026-11-14T09:45:02.952Z"
+        },
+        "machineryOwnership": {
+          "status": "unverified"
+        },
+        "farmlandAuthority": {
+          "status": "unverified"
+        }
+      }
+    }
+  ],
+  "listings": [
+    {
+      "id": "list_farmland_01",
+      "owner_id": "user_2",
+      "provider_name": "Engr. Adesola Olawale",
+      "category": "farmland",
+      "title": "25 Hectares Prime Fertile Loam Farmland with River Irrigation",
+      "description": "Sprawling, flat agricultural terrain with rich deep loam topsoil located in Iseyin along the Ogun River basin. Accessible year-round via graded truck road. Fully demarcated perimeter with verified Survey Plan and Certificate of Occupancy (C of O). Ideal for maize, cassava, soybeans, and all-season vegetable cultivation.",
+      "location": {
+        "state": "Oyo",
+        "lga": "Iseyin",
+        "town": "Ogun River Corridor",
+        "address_privacy": "general_area"
+      },
+      "price": 180000,
+      "pricing_unit": "hectare / year",
+      "status": "active",
+      "verified": true,
+      "cover_image": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&q=80&w=800"
+      ],
+      "attributes": {
+        "size": 25,
+        "unit": "hectares",
+        "soil_type": "Deep Loam / High Organic Content",
+        "water_source": "Perennial River & Borehole point",
+        "topography": "Flat / Gentle Slope (1-2%)",
+        "access_road": "All-season Graded Truck Access",
+        "lease_term": "1 to 5 Years Renewable",
+        "title_type": "Certificate of Occupancy (C of O) Verified"
+      },
+      "availability": {
+        "status": "available_now",
+        "minimum_lease_years": 1,
+        "maximum_lease_years": 5
+      },
+      "created_at": "2026-02-14T08:00:00Z",
+      "updated_at": "2026-10-25T14:30:00Z",
+      "views_count": 1420,
+      "search_impressions": 6850,
+      "enquiry_count": 34
+    },
+    {
+      "id": "list_farmland_02",
+      "owner_id": "user_1",
+      "provider_name": "Musa Danladi",
+      "category": "farmland",
+      "title": "50 Hectares High-Yield Grain-Ready Farmland in Zaria",
+      "description": "Cleared and rock-free grain cultivation land ready for immediate tractor operations. High nitrogen clay loam composition optimal for sorghum, maize, cowpea, and groundnut rotations. Bordered by irrigation canal access.",
+      "location": {
+        "state": "Kaduna",
+        "lga": "Zaria",
+        "town": "Dambo Agricultural Belt",
+        "address_privacy": "general_area"
+      },
+      "price": 140000,
+      "pricing_unit": "hectare / year",
+      "status": "active",
+      "verified": true,
+      "cover_image": "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&q=80&w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=800"
+      ],
+      "attributes": {
+        "size": 50,
+        "unit": "hectares",
+        "soil_type": "Clay Loam (Grain Optimized)",
+        "water_source": "Seasonal Canal & Water Reservoir",
+        "topography": "Level Plain",
+        "access_road": "Tarred Highway 2km off-road",
+        "lease_term": "1 to 3 Years",
+        "title_type": "Customary Right of Occupancy with Local Govt Gazette"
+      },
+      "availability": {
+        "status": "available_now",
+        "minimum_lease_years": 1,
+        "maximum_lease_years": 3
+      },
+      "created_at": "2026-03-01T10:00:00Z",
+      "updated_at": "2026-10-28T09:15:00Z",
+      "views_count": 980,
+      "search_impressions": 4300,
+      "enquiry_count": 21
+    },
+    {
+      "id": "list_machinery_01",
+      "owner_id": "user_1",
+      "provider_name": "Musa Danladi",
+      "category": "machinery",
+      "title": "Massey Ferguson 375 Tractor (75HP) with Disc Plough & Harrow",
+      "description": "High-torque Massey Ferguson 375 4WD tractor in peak mechanical condition. Comes with heavy-duty 3-disc plough, 18-disc offset harrow, and certified operator with 8+ years experience. Low fuel consumption, reliable hydraulic system.",
+      "location": {
+        "state": "Kaduna",
+        "lga": "Zaria",
+        "town": "Zaria Depot & North-West Service Radius",
+        "address_privacy": "general_area"
+      },
+      "price": 55000,
+      "pricing_unit": "day",
+      "status": "active",
+      "verified": true,
+      "cover_image": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1530267981375-f0de937f5f13?auto=format&fit=crop&q=80&w=800"
+      ],
+      "attributes": {
+        "machine_type": "Tractor 4WD",
+        "make_model": "Massey Ferguson 375 (75 HP)",
+        "condition": "Excellent / Serviced Bi-weekly",
+        "operator_included": "Yes (Certified Professional Included)",
+        "fuel_terms": "Client provides Diesel (AGO) or Fuel-at-cost option",
+        "delivery_available": "Yes, Flatbed low-loader within 80km radius",
+        "implements_included": "3-Disc Plough, 18-Disc Harrow, Ridger"
+      },
+      "availability": {
+        "status": "available_now",
+        "minimum_rental_days": 2,
+        "maximum_rental_days": 30
+      },
+      "created_at": "2026-01-20T11:00:00Z",
+      "updated_at": "2026-11-01T16:00:00Z",
+      "views_count": 2150,
+      "search_impressions": 11200,
+      "enquiry_count": 58
+    },
+    {
+      "id": "list_machinery_02",
+      "owner_id": "user_2",
+      "provider_name": "Engr. Adesola Olawale",
+      "category": "machinery",
+      "title": "John Deere S680 Combine Harvester (Grain & Rice Header)",
+      "description": "Industrial capacity John Deere grain combine harvester with advanced loss-monitoring sensor technology. Includes 25-ft draper header and specialized paddy rice attachment. Capable of harvesting 15-20 hectares daily with minimal grain breakage.",
+      "location": {
+        "state": "Ogun",
+        "lga": "Abeokuta North",
+        "town": "Abeokuta Industrial Hub",
+        "address_privacy": "general_area"
+      },
+      "price": 280000,
+      "pricing_unit": "day",
+      "status": "active",
+      "verified": true,
+      "cover_image": "https://images.unsplash.com/photo-1530267981375-f0de937f5f13?auto=format&fit=crop&q=80&w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1530267981375-f0de937f5f13?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=800"
+      ],
+      "attributes": {
+        "machine_type": "Combine Harvester",
+        "make_model": "John Deere S680 (Rotary Separation)",
+        "condition": "Certified Inspection Passed",
+        "operator_included": "Yes (Senior Technician & Co-operator)",
+        "fuel_terms": "Dry Lease / Client supplies AGO",
+        "delivery_available": "Heavy Duty Flatbed Transport Arranged"
+      },
+      "availability": {
+        "status": "available_now",
+        "minimum_rental_days": 3,
+        "maximum_rental_days": 21
+      },
+      "created_at": "2026-02-05T12:00:00Z",
+      "updated_at": "2026-10-30T10:00:00Z",
+      "views_count": 1890,
+      "search_impressions": 8900,
+      "enquiry_count": 42
+    },
+    {
+      "id": "list_labour_01",
+      "owner_id": "user_3",
+      "provider_name": "Chidi Okonkwo (Benue Agro-Labour)",
+      "category": "labour",
+      "title": "Seasoned 10-Man Cassava & Yam Harvesting Crew",
+      "description": "Disciplined, energetic 10-person agricultural crew specialized in root crop extraction, grading, and field bagging. Minimum root breakage guarantee with tools (harvesting forks, cutlasses, sacks) provided. High daily output.",
+      "location": {
+        "state": "Benue",
+        "lga": "Gboko",
+        "town": "Gboko / Makurdi Belt",
+        "address_privacy": "general_area"
+      },
+      "price": 45000,
+      "pricing_unit": "crew / day",
+      "status": "paused",
+      "verified": true,
+      "cover_image": "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&q=80&w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&q=80&w=800"
+      ],
+      "attributes": {
+        "crew_size": "10 Skilled Workers + 1 Supervisor",
+        "work_type": "Cassava, Yam & Sweet Potato Harvesting / Bagging",
+        "experience_years": "7+ Years Group Experience",
+        "daily_hours": "8:00 AM – 4:30 PM (with 1 hr rest break)",
+        "tools_provided": "Full Hand Tools, Machetes, Extraction Stakes",
+        "accommodation_required": "Only for multi-day assignments over 50km"
+      },
+      "availability": {
+        "status": "available_now",
+        "minimum_booking_days": 2,
+        "maximum_booking_days": 14
+      },
+      "created_at": "2026-03-10T14:00:00Z",
+      "updated_at": "2026-11-14T09:44:05.678Z",
+      "views_count": 1120,
+      "search_impressions": 5400,
+      "enquiry_count": 31
+    },
+    {
+      "id": "list_training_01",
+      "owner_id": "user_4",
+      "provider_name": "Dr. Fatima Bello",
+      "category": "training",
+      "title": "Commercial Greenhouse Tomato & Habanero Masterclass",
+      "description": "Intensive 5-day hands-on masterclass covering greenhouse climate control, drip fertigation formulation, biological pest management, and export grading standards. Includes printed operational manual and TerraTills Certificate of Competency.",
+      "location": {
+        "state": "Plateau",
+        "lga": "Jos South",
+        "town": "Jos Greenhouse Center",
+        "address_privacy": "exact"
+      },
+      "price": 75000,
+      "pricing_unit": "participant",
+      "status": "active",
+      "verified": true,
+      "cover_image": "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=800",
+      "gallery": [
+        "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=800"
+      ],
+      "attributes": {
+        "course_level": "Intermediate to Commercial Enterprise",
+        "delivery_mode": "In-person Practical + Hybrid Digital Materials",
+        "duration_days": "5 Days (Full time)",
+        "certification": "Accredited TerraTills Agro-Certificate",
+        "materials_included": "Fertigation Guide, Seed Starter Kit, PPE",
+        "instructor_credentials": "PhD Horticulture, 12 years Commercial Farm Manager"
+      },
+      "availability": {
+        "status": "enrolling_cohort",
+        "next_cohort_date": "2026-12-05",
+        "seat_capacity": 25
+      },
+      "created_at": "2026-04-12T09:00:00Z",
+      "updated_at": "2026-11-01T18:00:00Z",
+      "views_count": 850,
+      "search_impressions": 4100,
+      "enquiry_count": 27
+    }
+  ],
+  "bookings": [
+    {
+      "id": "BK-2026-8801",
+      "reference": "BK-2026-8801",
+      "customer_id": "user_1",
+      "customer_name": "Musa Danladi",
+      "provider_id": "user_2",
+      "provider_name": "Engr. Adesola Olawale",
+      "listing_id": "list_farmland_01",
+      "listing_title": "25 Hectares Prime Fertile Loam Farmland with River Irrigation",
+      "category": "farmland",
+      "listing_snapshot": {
+        "title": "25 Hectares Prime Fertile Loam Farmland with River Irrigation",
+        "category": "farmland",
+        "unit_price": 180000,
+        "pricing_unit": "hectare / year",
+        "location": "Iseyin, Oyo State",
+        "agreed_hectares": 10,
+        "lease_duration_years": 1
+      },
+      "scheduled_dates": {
+        "start": "2026-12-01",
+        "end": "2027-11-30"
+      },
+      "service_location": {
+        "state": "Oyo",
+        "lga": "Iseyin",
+        "town": "Ogun River Corridor",
+        "details": "Plot Section B, demarcated with survey beacons"
+      },
+      "amount_breakdown": {
+        "base_amount": 1800000,
+        "survey_legal_fee": 100000,
+        "platform_fee": 95000,
+        "total_amount": 1995000
+      },
+      "terms_agreed": {
+        "provider_accepted_at": "2026-11-02T10:14:00Z",
+        "agreed_scope": "10 hectares lease for hybrid maize grain production",
+        "cancellation_policy": "Full refund if cancelled before possession; 50% survey deduction thereafter.",
+        "payment_due_date": "2026-11-15"
+      },
+      "status": "confirmed",
+      "payment_status": "successful",
+      "settlement_status": "not_eligible",
+      "created_at": "2026-11-01T08:30:00Z",
+      "updated_at": "2026-11-02T10:14:00Z",
+      "timeline": [
+        {
+          "step": "request_submitted",
+          "actor": "customer",
+          "timestamp": "2026-11-01T08:30:00Z",
+          "note": "Booking request sent by Musa Danladi for 10 hectares"
+        },
+        {
+          "step": "provider_accepted",
+          "actor": "provider",
+          "timestamp": "2026-11-02T10:14:00Z",
+          "note": "Provider accepted terms. Scope & price finalized. Customer can proceed to review & payment."
+        },
+        {
+          "step": "payment_verified",
+          "actor": "system_bach",
+          "timestamp": "2026-11-07T12:32:11.993Z",
+          "note": "Server verified Bach payment of ₦1,995,000. Secured in platform holding."
+        }
+      ],
+      "payment_details": {
+        "provider": "bach",
+        "gateway_reference": "BACH-TX-1794054731936-27186043",
+        "transaction_reference": "TX-1794054731993",
+        "paid_at": "2026-11-07T12:32:11.993Z",
+        "amount_paid": 1995000,
+        "method": "Bach Secured Payment (NIP / Card)"
+      }
+    },
+    {
+      "id": "BK-2026-8802",
+      "reference": "BK-2026-8802",
+      "customer_id": "user_2",
+      "customer_name": "Engr. Adesola Olawale",
+      "provider_id": "user_1",
+      "provider_name": "Musa Danladi",
+      "listing_id": "list_machinery_01",
+      "listing_title": "Massey Ferguson 375 Tractor (75HP) with Disc Plough & Harrow",
+      "category": "machinery",
+      "listing_snapshot": {
+        "title": "Massey Ferguson 375 Tractor (75HP) with Disc Plough & Harrow",
+        "category": "machinery",
+        "unit_price": 55000,
+        "pricing_unit": "day",
+        "days_count": 5,
+        "operator_included": true
+      },
+      "scheduled_dates": {
+        "start": "2026-11-10",
+        "end": "2026-11-15"
+      },
+      "service_location": {
+        "state": "Kaduna",
+        "lga": "Zaria",
+        "town": "Dambo Farmlands",
+        "details": "Field Gate 3 off Zaria-Kano expressway"
+      },
+      "amount_breakdown": {
+        "base_amount": 275000,
+        "operator_allowance": 25000,
+        "logistics_delivery": 40000,
+        "total_amount": 340000
+      },
+      "payment_details": {
+        "provider": "bach",
+        "gateway_reference": "BACH-TX-99812481-OK",
+        "transaction_reference": "TX-2026-0091",
+        "paid_at": "2026-11-03T14:20:00Z",
+        "method": "Bank Transfer (NIP Virtual Account)",
+        "amount_paid": 340000
+      },
+      "status": "completed",
+      "payment_status": "successful",
+      "settlement_status": "eligible",
+      "created_at": "2026-11-02T11:00:00Z",
+      "updated_at": "2026-11-03T14:25:00Z",
+      "timeline": [
+        {
+          "step": "request_submitted",
+          "actor": "customer",
+          "timestamp": "2026-11-02T11:00:00Z",
+          "note": "Customer requested 5 days tractor harrowing"
+        },
+        {
+          "step": "provider_accepted",
+          "actor": "provider",
+          "timestamp": "2026-11-02T15:30:00Z",
+          "note": "Terms agreed with operator deployment confirmed"
+        },
+        {
+          "step": "payment_verified",
+          "actor": "system_bach",
+          "timestamp": "2026-11-03T14:20:00Z",
+          "note": "Server verified Bach payment of ₦340,000. Funds secured in platform holding."
+        },
+        {
+          "step": "in_progress",
+          "actor": "provider",
+          "timestamp": "2026-11-04T07:00:00Z",
+          "note": "Machinery mobilized to site."
+        },
+        {
+          "step": "provider_completion",
+          "actor": "provider",
+          "timestamp": "2026-11-07T12:33:19.987Z",
+          "note": "Provider recorded delivery completion. Awaiting independent customer confirmation."
+        },
+        {
+          "step": "customer_completion",
+          "actor": "customer",
+          "timestamp": "2026-11-07T12:33:20.000Z",
+          "note": "Customer independently inspected and confirmed satisfaction."
+        }
+      ],
+      "provider_confirmed_at": "2026-11-07T12:33:19.987Z",
+      "provider_completion_notes": "5 days harrowing completed with operator Malam Ibrahim",
+      "customer_confirmed_at": "2026-11-07T12:33:20.000Z",
+      "customer_completion_notes": "Dambo farmlands ploughed and harrowed cleanly. Satisfied."
+    },
+    {
+      "id": "BK-2026-8803",
+      "reference": "BK-2026-8803",
+      "customer_id": "user_1",
+      "customer_name": "Musa Danladi",
+      "provider_id": "user_3",
+      "provider_name": "Chidi Okonkwo (Benue Agro-Labour)",
+      "listing_id": "list_labour_01",
+      "listing_title": "Seasoned 10-Man Cassava & Yam Harvesting Crew",
+      "category": "labour",
+      "listing_snapshot": {
+        "title": "Seasoned 10-Man Cassava & Yam Harvesting Crew",
+        "category": "labour",
+        "unit_price": 45000,
+        "pricing_unit": "crew / day",
+        "days_count": 4
+      },
+      "scheduled_dates": {
+        "start": "2026-10-24",
+        "end": "2026-10-28"
+      },
+      "service_location": {
+        "state": "Benue",
+        "lga": "Gboko",
+        "town": "Tiv Yam Farm Zone"
+      },
+      "amount_breakdown": {
+        "base_amount": 180000,
+        "crew_transport": 20000,
+        "total_amount": 200000
+      },
+      "payment_details": {
+        "provider": "bach",
+        "gateway_reference": "BACH-TX-77192844-OK",
+        "transaction_reference": "TX-2026-0044",
+        "paid_at": "2026-10-22T09:10:00Z",
+        "method": "Debit Card (Mastercard)",
+        "amount_paid": 200000
+      },
+      "provider_confirmed_at": "2026-10-28T17:30:00Z",
+      "provider_completion_note": "Harvest completed on all 4 hectares. 380 sacks of cassava tubers extracted and assembled at roadside loading bay.",
+      "customer_confirmed_at": "2026-11-07T12:32:20.906Z",
+      "status": "completed",
+      "payment_status": "successful",
+      "settlement_status": "eligible",
+      "created_at": "2026-10-20T10:00:00Z",
+      "updated_at": "2026-10-28T17:30:00Z",
+      "timeline": [
+        {
+          "step": "request_submitted",
+          "actor": "customer",
+          "timestamp": "2026-10-20T10:00:00Z",
+          "note": "Booking request created"
+        },
+        {
+          "step": "terms_agreed",
+          "actor": "provider",
+          "timestamp": "2026-10-21T12:00:00Z",
+          "note": "Agreed on 10-man team for 4 days"
+        },
+        {
+          "step": "payment_verified",
+          "actor": "system_bach",
+          "timestamp": "2026-10-22T09:10:00Z",
+          "note": "Payment verified and held in platform custody"
+        },
+        {
+          "step": "work_completed_by_provider",
+          "actor": "provider",
+          "timestamp": "2026-10-28T17:30:00Z",
+          "note": "Provider recorded delivery completion. Awaiting independent customer confirmation."
+        },
+        {
+          "step": "customer_completion",
+          "actor": "customer",
+          "timestamp": "2026-11-07T12:32:20.906Z",
+          "note": "Customer independently inspected and confirmed satisfaction."
+        }
+      ],
+      "customer_completion_notes": "Inspected 380 sacks of cassava tubers, excellent extraction quality"
+    },
+    {
+      "id": "BK-2026-8804",
+      "reference": "BK-2026-8804",
+      "customer_id": "user_1",
+      "customer_name": "Musa Danladi",
+      "provider_id": "user_4",
+      "provider_name": "Dr. Fatima Bello",
+      "listing_id": "list_training_01",
+      "listing_title": "Commercial Greenhouse Tomato & Habanero Masterclass",
+      "category": "training",
+      "listing_snapshot": {
+        "title": "Commercial Greenhouse Tomato & Habanero Masterclass",
+        "category": "training",
+        "unit_price": 75000,
+        "pricing_unit": "participant",
+        "participants_count": 2
+      },
+      "scheduled_dates": {
+        "start": "2026-10-05",
+        "end": "2026-10-09"
+      },
+      "service_location": {
+        "state": "Plateau",
+        "lga": "Jos South",
+        "town": "Jos Greenhouse Center"
+      },
+      "amount_breakdown": {
+        "base_amount": 150000,
+        "materials_fee": 15000,
+        "total_amount": 165000
+      },
+      "payment_details": {
+        "provider": "bach",
+        "gateway_reference": "BACH-TX-66281920-OK",
+        "transaction_reference": "TX-2026-0012",
+        "paid_at": "2026-10-01T11:00:00Z",
+        "method": "Bank Transfer (Bach NIP)",
+        "amount_paid": 165000
+      },
+      "provider_confirmed_at": "2026-10-09T16:00:00Z",
+      "customer_confirmed_at": "2026-10-09T18:00:00Z",
+      "status": "completed",
+      "payment_status": "successful",
+      "settlement_status": "paid",
+      "created_at": "2026-09-28T09:00:00Z",
+      "updated_at": "2026-10-10T12:00:00Z",
+      "timeline": [
+        {
+          "step": "request_submitted",
+          "actor": "customer",
+          "timestamp": "2026-09-28T09:00:00Z",
+          "note": "Registered 2 delegates for Greenhouse training"
+        },
+        {
+          "step": "payment_verified",
+          "actor": "system_bach",
+          "timestamp": "2026-10-01T11:00:00Z",
+          "note": "Payment verified"
+        },
+        {
+          "step": "training_completed",
+          "actor": "provider",
+          "timestamp": "2026-10-09T16:00:00Z",
+          "note": "Training delivered and certificates issued"
+        },
+        {
+          "step": "customer_confirmed",
+          "actor": "customer",
+          "timestamp": "2026-10-09T18:00:00Z",
+          "note": "Customer independently confirmed satisfactory completion"
+        },
+        {
+          "step": "settlement_disbursed",
+          "actor": "system",
+          "timestamp": "2026-10-10T12:00:00Z",
+          "note": "Net earnings paid to provider verified payout bank account"
+        }
+      ]
+    }
+  ],
+  "service_requests": [
+    {
+      "id": "req_001",
+      "reference": "REQ-2026-0419",
+      "listing_id": "list_machinery_01",
+      "listing_title": "Massey Ferguson 375 Tractor (75HP) with Disc Plough & Harrow",
+      "customer_id": "user_3",
+      "customer_name": "Chidi Emeka Okonkwo",
+      "customer_avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=200",
+      "provider_id": "user_1",
+      "requested_dates": {
+        "start": "2026-11-20",
+        "duration_days": 3
+      },
+      "service_location": {
+        "state": "Kaduna",
+        "lga": "Igabi",
+        "town": "Rigasa Agro Cluster"
+      },
+      "proposed_scope": "3 days ploughing and harrowing for early dry-season vegetable plots (approx 6 hectares). Operator needed.",
+      "proposed_amount": 165000,
+      "status": "pending_provider_response",
+      "created_at": "2026-11-06T15:45:00Z"
+    }
+  ],
+  "transactions": [
+    {
+      "gateway_reference": "BACH-TX-1794054731936-27186043",
+      "booking_reference": "BK-2026-8801",
+      "type": "customer_payment",
+      "direction": "inflow",
+      "user_id": "user_1",
+      "amount": 1995000,
+      "currency": "NGN",
+      "status": "successful",
+      "verification_state": "verified_server_side",
+      "provider": "bach",
+      "channel": "Bank Transfer / Card",
+      "fees": 29925,
+      "id": "TX-2026-9158",
+      "created_at": "2026-11-07T12:32:12.012Z"
+    },
+    {
+      "id": "TX-2026-0091",
+      "gateway_reference": "BACH-TX-99812481-OK",
+      "booking_reference": "BK-2026-8802",
+      "type": "customer_payment",
+      "direction": "inflow",
+      "user_id": "user_2",
+      "amount": 340000,
+      "currency": "NGN",
+      "status": "successful",
+      "verification_state": "verified_server_side",
+      "provider": "bach",
+      "channel": "Bank Transfer (NIP Virtual Account)",
+      "fees": 3400,
+      "created_at": "2026-11-03T14:20:00Z"
+    },
+    {
+      "id": "TX-2026-0044",
+      "gateway_reference": "BACH-TX-77192844-OK",
+      "booking_reference": "BK-2026-8803",
+      "type": "customer_payment",
+      "direction": "inflow",
+      "user_id": "user_1",
+      "amount": 200000,
+      "currency": "NGN",
+      "status": "successful",
+      "verification_state": "verified_server_side",
+      "provider": "bach",
+      "channel": "Mastercard Debit",
+      "fees": 2500,
+      "created_at": "2026-10-22T09:10:00Z"
+    },
+    {
+      "id": "TX-2026-0012",
+      "gateway_reference": "BACH-TX-66281920-OK",
+      "booking_reference": "BK-2026-8804",
+      "type": "customer_payment",
+      "direction": "inflow",
+      "user_id": "user_1",
+      "amount": 165000,
+      "currency": "NGN",
+      "status": "successful",
+      "verification_state": "verified_server_side",
+      "provider": "bach",
+      "channel": "Bach Instant Transfer",
+      "fees": 2000,
+      "created_at": "2026-10-01T11:00:00Z"
+    }
+  ],
+  "earnings": [
+    {
+      "id": "earn_01",
+      "provider_id": "user_1",
+      "booking_id": "BK-2026-8802",
+      "listing_title": "Massey Ferguson 375 Tractor (75HP)",
+      "gross_amount": 340000,
+      "commission": 17000,
+      "deductions": 0,
+      "net_earnings": 323000,
+      "status": "paid",
+      "eligible_for_payout": true,
+      "created_at": "2026-11-03T14:25:00Z",
+      "payout_id": "PO-2026-738"
+    },
+    {
+      "id": "earn_02",
+      "provider_id": "user_4",
+      "booking_id": "BK-2026-8804",
+      "listing_title": "Commercial Greenhouse Masterclass",
+      "gross_amount": 165000,
+      "commission": 8250,
+      "deductions": 0,
+      "net_earnings": 156750,
+      "status": "paid",
+      "eligible_for_payout": true,
+      "payout_id": "PO-2026-001",
+      "created_at": "2026-10-09T18:00:00Z"
+    },
+    {
+      "id": "earn_1794054732014",
+      "provider_id": "user_2",
+      "booking_id": "BK-2026-8801",
+      "listing_title": "25 Hectares Prime Fertile Loam Farmland with River Irrigation",
+      "gross_amount": 1995000,
+      "commission": 99750,
+      "deductions": 0,
+      "net_earnings": 1895250,
+      "status": "pending_completion",
+      "eligible_for_payout": false,
+      "created_at": "2026-11-07T12:32:12.014Z"
+    }
+  ],
+  "payouts": [
+    {
+      "provider_id": "user_1",
+      "reference": "PO-2026-738",
+      "amount": 200000,
+      "currency": "NGN",
+      "destination_bank": "Zenith Bank PLC",
+      "destination_account": "******4829",
+      "status": "completed",
+      "bach_transfer_reference": "BACH-TRF-1794054814525-A4EF4F",
+      "id": "PO-2026-738",
+      "initiated_at": "2026-11-07T12:33:34.526Z"
+    },
+    {
+      "id": "PO-2026-001",
+      "provider_id": "user_4",
+      "reference": "PO-2026-001",
+      "amount": 156750,
+      "currency": "NGN",
+      "destination_bank": "Access Bank Nigeria PLC",
+      "destination_account": "******9102",
+      "status": "completed",
+      "initiated_at": "2026-10-10T10:00:00Z",
+      "completed_at": "2026-10-10T12:00:00Z",
+      "bach_transfer_reference": "BACH-TRF-881928-OK"
+    }
+  ],
+  "payment_methods": [
+    {
+      "id": "pm_card_01",
+      "user_id": "user_1",
+      "type": "customer_payment_method",
+      "kind": "card",
+      "brand": "Mastercard",
+      "last4": "4821",
+      "expiry": "08/28",
+      "bank_name": "Guaranty Trust Bank",
+      "is_default": true,
+      "created_at": "2024-03-12"
+    },
+    {
+      "id": "pm_payout_01",
+      "user_id": "user_1",
+      "type": "provider_payout_account",
+      "kind": "bank_account",
+      "bank_name": "Zenith Bank PLC",
+      "bank_code": "057",
+      "account_number_masked": "******5190",
+      "account_name": "MUSA DANLADI AGRO ENT",
+      "verification_status": "verified",
+      "is_default": true,
+      "created_at": "2024-03-20"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev_01",
+      "booking_id": "BK-2026-8804",
+      "reviewer_id": "user_1",
+      "reviewer_name": "Musa Danladi",
+      "reviewer_avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+      "reviewee_id": "user_4",
+      "listing_id": "list_training_01",
+      "rating": 5,
+      "category_ratings": {
+        "quality": 5,
+        "communication": 5,
+        "timeliness": 5,
+        "reliability": 5
+      },
+      "comment": "Outstanding practical training! Dr. Fatima shared exact fertigation recipes and greenhouse layout blueprints that have completely upgraded our farm productivity.",
+      "created_at": "2026-10-10T14:00:00Z",
+      "provider_response": "Thank you Alhaji Musa! Delighted to see your agro-venture expanding into controlled climate production."
+    }
+  ],
+  "saved_listings": [
+    {
+      "user_id": "user_1",
+      "listing_id": "list_farmland_01",
+      "saved_at": "2026-10-15T09:00:00Z"
+    },
+    {
+      "user_id": "user_1",
+      "listing_id": "list_machinery_02",
+      "saved_at": "2026-10-20T11:30:00Z"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "conv_01",
+      "booking_id": "BK-2026-8801",
+      "participants": [
+        "user_1",
+        "user_2"
+      ],
+      "listing_id": "list_farmland_01",
+      "listing_title": "25 Hectares Prime Fertile Loam Farmland",
+      "last_message": "Survey beacon inspection scheduled for Tuesday morning.",
+      "last_message_at": "2026-11-02T10:15:00Z",
+      "unread_count": {
+        "user_1": 0,
+        "user_2": 1
+      }
+    },
+    {
+      "id": "conv_02",
+      "booking_id": "BK-2026-8802",
+      "participants": [
+        "user_1",
+        "user_2"
+      ],
+      "listing_id": "list_machinery_01",
+      "listing_title": "Massey Ferguson 375 Tractor",
+      "last_message": "Operator Malam Ibrahim has arrived with the plough implement.",
+      "last_message_at": "2026-11-04T07:15:00Z",
+      "unread_count": {
+        "user_1": 0,
+        "user_2": 0
+      }
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg_01",
+      "conversation_id": "conv_01",
+      "sender_id": "user_1",
+      "text": "Good day Engr. Adesola. We would like to confirm if the river pump station is operational for dry season planting.",
+      "timestamp": "2026-11-01T09:00:00Z",
+      "read": true
+    },
+    {
+      "id": "msg_02",
+      "conversation_id": "conv_01",
+      "sender_id": "user_2",
+      "text": "Good day Alhaji Musa. Yes, the Ogun river pump station operates with dual 15HP submersible pumps. Survey beacon inspection scheduled for Tuesday morning.",
+      "timestamp": "2026-11-02T10:15:00Z",
+      "read": true
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif_1794054732014",
+      "user_id": "user_2",
+      "type": "payment",
+      "title": "Payment Confirmed & Secured",
+      "summary": "Customer paid ₦1,995,000 for 25 Hectares Prime Fertile Loam Farmland with River Irrigation. You may commence service delivery.",
+      "related_record": {
+        "type": "booking",
+        "id": "BK-2026-8801"
+      },
+      "destination": "/dashboard/bookings/BK-2026-8801",
+      "read": false,
+      "created_at": "2026-11-07T12:32:12.014Z"
+    },
+    {
+      "id": "notif_01",
+      "user_id": "user_1",
+      "type": "service_request",
+      "title": "New Service Request Received",
+      "summary": "Chidi Okonkwo submitted a request for Massey Ferguson 375 Tractor (3 days).",
+      "related_record": {
+        "type": "service_request",
+        "id": "req_001"
+      },
+      "destination": "/dashboard/service-requests/req_001",
+      "read": false,
+      "created_at": "2026-11-06T15:45:00Z"
+    },
+    {
+      "id": "notif_02",
+      "user_id": "user_1",
+      "type": "booking",
+      "title": "Terms Accepted — Payment Due",
+      "summary": "Engr. Adesola accepted your booking terms for Farmland in Iseyin. Review & proceed to payment.",
+      "related_record": {
+        "type": "booking",
+        "id": "BK-2026-8801"
+      },
+      "destination": "/dashboard/bookings/BK-2026-8801",
+      "read": false,
+      "created_at": "2026-11-02T10:14:00Z"
+    },
+    {
+      "id": "notif_03",
+      "user_id": "user_1",
+      "type": "booking_completion",
+      "title": "Provider Marked Service Completed",
+      "summary": "Chidi Okonkwo reported harvesting complete on Benue cassava farm. Please inspect and confirm.",
+      "related_record": {
+        "type": "booking",
+        "id": "BK-2026-8803"
+      },
+      "destination": "/dashboard/bookings/BK-2026-8803/completion",
+      "read": false,
+      "created_at": "2026-10-28T17:35:00Z"
+    },
+    {
+      "id": "notif_04",
+      "user_id": "user_1",
+      "type": "payment",
+      "title": "Payment Secured via Bach",
+      "summary": "₦340,000 received for Tractor Rental BK-2026-8802 and held in secured platform holding.",
+      "related_record": {
+        "type": "transaction",
+        "id": "TX-2026-0091"
+      },
+      "destination": "/dashboard/finance/transactions/TX-2026-0091",
+      "read": true,
+      "created_at": "2026-11-03T14:22:00Z"
+    }
+  ],
+  "support_tickets": [
+    {
+      "id": "TCK-2026-901",
+      "user_id": "user_1",
+      "reference": "TCK-2026-901",
+      "category": "verification",
+      "subject": "Farmland Lease Authority Verification Query",
+      "description": "Uploaded customary gazette for Zaria farmland parcel. Requesting update on verification timeline.",
+      "status": "in_progress",
+      "created_at": "2026-10-20T14:00:00Z",
+      "messages": [
+        {
+          "sender": "user",
+          "text": "Uploaded customary gazette for Zaria farmland parcel. Requesting update on verification timeline.",
+          "timestamp": "2026-10-20T14:00:00Z"
+        },
+        {
+          "sender": "support",
+          "text": "Hello Alhaji Musa, our verification team is cross-referencing the gazette with Kaduna State Lands Bureau. Verification will conclude within 24 working hours.",
+          "timestamp": "2026-10-21T09:30:00Z"
+        }
+      ]
+    }
+  ],
+  "verification_submissions": [
+    {
+      "id": "ver_01",
+      "user_id": "user_1",
+      "type": "farmland_authority",
+      "type_title": "Farmland Ownership & Lease Authority Verification",
+      "status": "under_review",
+      "submitted_at": "2026-10-18T11:00:00Z",
+      "documents": [
+        {
+          "name": "Kaduna_State_Customary_Gazette_Dambo.pdf",
+          "size": "2.4 MB",
+          "uploadDate": "2026-10-18"
+        }
+      ],
+      "declaration_accepted": true,
+      "notes": "Document under inspection by land registry desk."
+    },
+    {
+      "id": "ver_02",
+      "user_id": "user_1",
+      "type": "machinery_ownership",
+      "type_title": "Machinery Ownership & Operator Certification",
+      "status": "approved",
+      "submitted_at": "2023-05-20T10:00:00Z",
+      "reviewed_at": "2023-05-22T15:00:00Z",
+      "documents": [
+        {
+          "name": "Massey_Ferguson_375_Receipt_ChassisDoc.pdf",
+          "size": "1.8 MB"
+        }
+      ]
+    }
+  ],
+  "user_locations": [
+    {
+      "id": "loc_01",
+      "user_id": "user_1",
+      "label": "Zaria Machinery Depot",
+      "type": "machinery",
+      "state": "Kaduna",
+      "lga": "Zaria",
+      "town": "Zaria City Industrial Layout",
+      "is_default": true
+    },
+    {
+      "id": "loc_02",
+      "user_id": "user_1",
+      "label": "Dambo Grain Farmland",
+      "type": "farmland",
+      "state": "Kaduna",
+      "lga": "Zaria",
+      "town": "Dambo Agricultural Corridor",
+      "is_default": false
+    }
+  ],
+  "user_settings": {
+    "user_1": {
+      "notifications": {
+        "booking_updates": {
+          "in_app": true,
+          "email": true,
+          "sms": true
+        },
+        "service_requests": {
+          "in_app": true,
+          "email": true,
+          "sms": true
+        },
+        "payments": {
+          "in_app": true,
+          "email": true,
+          "sms": true
+        },
+        "messages": {
+          "in_app": true,
+          "email": false,
+          "sms": false
+        },
+        "marketing": {
+          "in_app": false,
+          "email": false,
+          "sms": false
+        }
+      },
+      "privacy": {
+        "profile_visibility": "public",
+        "show_phone_number": "confirmed_bookings_only",
+        "show_location_precision": "general_community",
+        "allow_search_indexing": true
+      },
+      "preferences": {
+        "language": "English (Nigeria)",
+        "currency": "NGN (₦)",
+        "dateFormat": "DD/MM/YYYY",
+        "timeFormat": "12-hour (am/pm)",
+        "reduceMotion": false
+      }
+    }
+  },
+  "audit_logs": [
+    {
+      "id": "log_1794651539272_y7az",
+      "actor_id": "user_2",
+      "action": "profile_updated",
+      "target_type": "user",
+      "target_id": "user_2",
+      "timestamp": "2026-11-14T10:18:59.272Z",
+      "details": "User updated profile information"
+    },
+    {
+      "id": "log_1794649664167_dcmr",
+      "actor_id": "user_3",
+      "action": "profile_updated",
+      "target_type": "user",
+      "target_id": "user_3",
+      "timestamp": "2026-11-14T09:47:44.167Z",
+      "details": "User updated profile information"
+    },
+    {
+      "id": "log_1794054814527_860z",
+      "actor_id": "user_1",
+      "action": "payout_requested",
+      "target_type": "payout",
+      "target_id": "PO-2026-738",
+      "timestamp": "2026-11-07T12:33:34.527Z",
+      "details": "Payout of ₦200000 requested via Bach adapter"
+    },
+    {
+      "id": "log_1794054800001_tnu7",
+      "actor_id": "user_2",
+      "action": "booking_completion_customer_confirm",
+      "target_type": "booking",
+      "target_id": "BK-2026-8802",
+      "timestamp": "2026-11-07T12:33:20.001Z",
+      "details": "Dambo farmlands ploughed and harrowed cleanly. Satisfied."
+    },
+    {
+      "id": "log_1794054799988_x8vk",
+      "actor_id": "user_1",
+      "action": "booking_completion_provider_confirm",
+      "target_type": "booking",
+      "target_id": "BK-2026-8802",
+      "timestamp": "2026-11-07T12:33:19.988Z",
+      "details": "5 days harrowing completed with operator Malam Ibrahim"
+    },
+    {
+      "id": "log_1794054740907_q1nj",
+      "actor_id": "user_1",
+      "action": "booking_completion_customer_confirm",
+      "target_type": "booking",
+      "target_id": "BK-2026-8803",
+      "timestamp": "2026-11-07T12:32:20.907Z",
+      "details": "Inspected 380 sacks of cassava tubers, excellent extraction quality"
+    },
+    {
+      "id": "log_1794054732015_hsio",
+      "actor_id": "user_1",
+      "action": "payment_verified",
+      "target_type": "booking",
+      "target_id": "BK-2026-8801",
+      "timestamp": "2026-11-07T12:32:12.015Z",
+      "details": "Payment verified via Bach for ₦1995000"
+    },
+    {
+      "id": "log_01",
+      "actor_id": "user_1",
+      "action": "booking_request_created",
+      "target_type": "booking",
+      "target_id": "BK-2026-8801",
+      "timestamp": "2026-11-01T08:30:00Z",
+      "details": "Created request for 10 hectares Farmland leasing in Oyo"
+    },
+    {
+      "id": "log_02",
+      "actor_id": "user_2",
+      "action": "booking_request_accepted",
+      "target_type": "booking",
+      "target_id": "BK-2026-8801",
+      "timestamp": "2026-11-02T10:14:00Z",
+      "details": "Agreed on scope and terms. Updated status to awaiting_payment."
+    }
+  ]
+}

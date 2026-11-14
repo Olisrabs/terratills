@@ -1,0 +1,541 @@
+TERRATILLS
+USER DASHBOARD
+Pages, Functional Details, Navigation and Implementation Prompt
+Functional specification
+
+
+1. Product-wide dashboard rules
+* One account and one unified dashboard for every user. Do not create mutually exclusive account types such as Farmer, Labourer, Landowner, Machinery Owner or Customer.
+* A user can offer several services and request services from others using the same account. Listings are user-owned records; one user may own many listings across categories.
+* Customer and provider are contextual roles for an individual request or booking, not permanent account types. The same user may be a customer in one booking and a provider in another.
+* Initial categories: Farmland Leasing, Machinery Rental, Farm Labour, and Agricultural Training/Tutorials. The system must allow additional categories.
+* Administrative/staff permissions are separate and are not part of the ordinary user dashboard.
+* Backend authorisation is mandatory for every private record and action. Hiding a frontend control is not sufficient.
+* Booking status, payment status and settlement status are separate state machines.
+* A booking request is not a paid or confirmed booking. Provider acceptance and agreement on scope, date, price and terms precede payment.
+* Payment success must be verified server-side through the payment provider's supported mechanisms. A browser redirect is not proof of payment.
+* Do not call the payment arrangement escrow unless the provider and legal structure explicitly support that term.
+* AI may assist discovery, extraction, estimates and guidance. It must not approve identity/ownership, certify machinery, approve providers, initiate payments, confirm completion, change authoritative booking status or release funds.
+* Bach is the selected payment provider. Confirm its actual API, payment, webhook, settlement, transfer, refund and payout capabilities before implementing dependent financial features.
+2. Dashboard page inventory
+No.PageRoutePresentation1Dashboard Overview/dashboardFull page2Explore Services/dashboard/exploreFull page3Search Results/dashboard/explore/searchFull page; preserve query state4Service Category/dashboard/explore/category/:slugFull page5Listing Details/dashboard/listings/:listingIdFull page; image viewer/report can be modal6Booking Request/dashboard/bookings/new/:listingIdFull page, multi-step form7Booking Confirmation/dashboard/bookings/:bookingId/confirmationFull page or confirmation state8My Bookings/dashboard/bookingsFull page; statuses are tabs9Booking Details/dashboard/bookings/:bookingIdFull page10Booking Messages/dashboard/bookings/:bookingId/messagesReuse Conversation page11Booking Completion/dashboard/bookings/:bookingId/completionFull page or contextual confirmation panel/modal12My Services/dashboard/servicesFull page; listing statuses are tabs13Add Service/dashboard/services/newFull page, multi-step form14Edit Service/dashboard/services/:listingId/editFull page, multi-step form15Service Details/Management/dashboard/services/:listingIdFull page; sections may be tabs16Service Availability/dashboard/services/:listingId/availabilityFull page or tab; date editor may be modal17Service Performance/dashboard/services/:listingId/performanceFull page or tab18Service Requests/dashboard/service-requestsFull page; statuses are tabs19Incoming Request Details/dashboard/service-requests/:requestIdFull page or detail drawer20Messages/dashboard/messagesFull page21Conversation/dashboard/messages/:conversationIdFull page or detail pane22Payments & Earnings/dashboard/financeFull page; finance sections are tabs23Payment Details/dashboard/finance/transactions/:transactionIdFull page or detail drawer24Earnings/dashboard/finance/earningsFull page or Finance tab25Payouts/dashboard/finance/payoutsFull page or Finance tab26Payment Methods/dashboard/finance/payment-methodsFull page or Finance tab; add/edit may be modal27Reviews/dashboard/reviewsFull page; review groups are tabs28Write Review/dashboard/reviews/new/:bookingIdFull page or modal29Saved Items/dashboard/savedFull page30Notifications/dashboard/notificationsFull page; categories may be tabs/filters31Help Centre/dashboard/supportFull page32Create Support Ticket/dashboard/support/newFull page or short-form modal33Support Ticket Details/dashboard/support/:ticketIdFull page34User Profile/dashboard/profileFull page35Edit Profile/dashboard/profile/editFull page or modal for limited edits36Verification Centre/dashboard/verificationFull page; types/statuses may be tabs37Verification Submission/dashboard/verification/:typeFull page, multi-step form38Account Settings/dashboard/settingsFull page settings index39Security Settings/dashboard/settings/securityFull page or settings tab40Notification Preferences/dashboard/settings/notificationsFull page or settings tab41Privacy Settings/dashboard/settings/privacyFull page or settings tab42Location & Addresses/dashboard/settings/locationsFull page or settings tab; add/edit may be modal/drawer43Language & Accessibility/dashboard/settings/preferencesFull page or settings tab44Account Deactivation/dashboard/settings/accountFull page; final confirmation is modal45AI Agricultural Assistant/dashboard/assistantFull page; conversation history may be drawer3. Detailed page specifications
+3.1 Dashboard Overview
+ROUTE/dashboardPRESENTATIONFull pagePurpose: Provide a consolidated view of the user's activity and next actions.
+* Welcome section: time-appropriate greeting, display name, profile image and profile completion.
+* Verification status and link to Verification Centre when action is needed.
+* Summary metrics: total bookings, active bookings, services listed, incoming requests, provider earnings and pending payouts. Customer spending must not be counted as earnings.
+* Quick actions: Explore Services, Add a Service, My Bookings, Incoming Requests, Messages, Earnings and Support.
+* Recent bookings: reference, service, other participant, booking date, scheduled date, amount, booking status and payment status.
+* My service listings: image, title, category, location, price, status, availability and management actions.
+* Incoming requests: customer, listing, requested date, location, proposed amount, status and response action.
+* Recent transactions and notifications with references, dates, amounts/statuses and links to records.
+* AI assistant shortcut with suggested agricultural/marketplace questions.
+Links and behaviour: Explore opens Explore Services; Add a Service opens its form; bookings, requests, listings, transactions and notifications open their exact records; finance summaries open Earnings/Payouts; assistant opens AI Agricultural Assistant.
+3.2 Explore Services
+ROUTE/dashboard/explorePRESENTATIONFull page; filters may use a drawerPurpose: Allow users to discover services available on TerraTills.
+* Search by service name, keyword, category, machinery type, labour type, training subject or location.
+* Categories: Farmland Leasing, Machinery Rental, Farm Labour, Agricultural Training/Tutorials and later enabled categories.
+* General filters: state, LGA, town/community, supported distance radius, price, availability, rating, verified provider and date listed.
+* Featured/recommended listing summaries: image, title, category, provider, verification, location, price basis, rating/review count, availability and save action.
+* Recently viewed listings where view history is supported; AI-assisted search entry point grounded in real listings.
+* Loading, empty, no-results, network-error and clear-filter states.
+Links and behaviour: Category opens Service Category; search opens Search Results; listing opens Listing Details; save updates Saved Items; provider opens User Profile; AI search opens Assistant.
+3.3 Search Results
+ROUTE/dashboard/explore/searchPRESENTATIONFull page; filters may use a drawerPurpose: Display results matching the search query.
+* Show editable query, result count, active filter chips, sorting and listing results.
+* Sort by relevance, newest, lowest/highest price and highest rated where rating data is sufficient.
+* Filters include category, location, price, availability, provider verification and category-specific attributes.
+* Support pagination/load-more, clear filters, no-result suggestions and error/retry states.
+* Preserve query, filters, sort order and page/scroll context when opening a listing and returning.
+Links and behaviour: A result opens Listing Details; category filters open Service Category; save updates Saved Items.
+3.4 Service Category
+ROUTE/dashboard/explore/category/:slugPRESENTATIONFull page; filter controls may use a drawerPurpose: Present listings and relevant filters for one service category.
+* Common contents: category title/description, search within category, location, price, availability, verification and rating filters, sort, listing results and related categories.
+* Farmland attributes: size/unit, location, known soil details, land-use suitability, water/irrigation, access road, lease duration, price, availability and ownership/authority verification state.
+* Machinery attributes: type, make/model, condition, capacity/specifications, rental basis, operator availability, delivery, fuel/operating terms, maintenance and available dates.
+* Labour attributes: work type, skills, experience, worker count, location, availability, duration, pricing basis, team/individual availability and relevant voluntarily supplied language preferences.
+* Training attributes: course title, subject, instructor, format, duration, skill level, price, schedule/self-paced status, materials and certificate availability if offered.
+Links and behaviour: Listing opens Listing Details; Add a Service opens the creation form with category preselected; related category opens another category page.
+3.5 Listing Details
+ROUTE/dashboard/listings/:listingIdPRESENTATIONFull page; image viewer and report flow may be modalPurpose: Provide the information needed to assess a service before booking.
+* Gallery: cover image, additional images, captions, image count, full-screen viewer and video support if enabled.
+* Listing details: title, category, description, location, price/pricing unit, availability, status, publication date and last update.
+* Provider details: display name, profile image, verification, rating/review count, completed bookings if displayed, member-since date and measured response indicators.
+* Category-specific information for farmland, machinery, labour or training.
+* Price breakdown: base price, unit, quantity/duration assumptions, extra charges, delivery/logistics cost, applicable customer charges and estimated total. Clearly identify estimates and unconfirmed amounts.
+* Availability calendar/date selector, unavailable dates and relevant duration/quantity requirements.
+* Reviews: rating, count, distribution, comments, dates and provider responses if present.
+* Location: state, LGA, town/community, appropriate map location if supplied and coverage/delivery conditions.
+* Trust information: provider/listing verification state, applicable checks, customer checklist and report action.
+* Related listings and other services by the same provider.
+Links and behaviour: Book Now opens Booking Request; Enquiry opens/creates Conversation; save updates Saved Items; provider opens User Profile; report opens report/support flow; related listings open their details.
+3.6 Booking Request
+ROUTE/dashboard/bookings/new/:listingIdPRESENTATIONFull page multi-step form; short confirmations may be modalPurpose: Collect the information required to request a service.
+* Show listing image/title, provider, location, price and pricing unit.
+* Collect customer name, phone, email, service location and alternative contact if supported.
+* Farmland: intended use, required size, lease start, duration, questions and conditions.
+* Machinery: machinery required, work location, date, duration, area/quantity and operator requirement.
+* Labour: work type, number of workers, location, start date, duration and expected duties.
+* Training: course, participant count, preferred schedule and learning format.
+* Collect preferred dates, duration/time, additional work description, special instructions, relevant attachments and delivery/transport requirements.
+* Show estimate with price, quantity/duration, extra charges, delivery cost and estimated total; label unconfirmed amounts.
+* Show booking terms, cancellation/refund conditions, completion process and required consent.
+* Allow review, edit and submit.
+Links and behaviour: Submission creates a pending request and opens Booking Confirmation. It appears in My Bookings. User may message provider or return to listing. Submission does not charge the customer.
+3.7 Booking Confirmation
+ROUTE/dashboard/bookings/:bookingId/confirmationPRESENTATIONFull page or confirmation statePurpose: Confirm successful recording of a booking request.
+* Show confirmation, booking reference, service, provider, requested date, estimate/amount, request status and submitted details.
+* Explain that the provider must respond and confirm terms before payment.
+* Provide Booking Details, provider conversation and Explore Services links.
+3.8 My Bookings
+ROUTE/dashboard/bookingsPRESENTATIONFull page; status groups are tabs; filters may use drawerPurpose: Manage services requested from other users.
+* Summary counts: total, pending, accepted/awaiting payment, paid/active, completed, cancelled and disputed.
+* Tabs: All, Pending, Awaiting Payment, Active, Completed, Cancelled and Disputed.
+* Each record: image, reference, service/category, provider, booking/scheduled dates, amount, payment status, booking status and last update.
+* Filters: status, category, date range, provider, location and payment status.
+* State-dependent actions: view, pay where due, message, cancel where permitted, request clarification, confirm completion, dispute where permitted and review after completion.
+* Provide empty, loading, error and no-results states.
+Links and behaviour: Record opens Booking Details; payment opens payment flow; message opens Conversation; completion opens Booking Completion; eligible completed booking opens Write Review.
+3.9 Booking Details
+ROUTE/dashboard/bookings/:bookingIdPRESENTATIONFull page; history/summary sections may be collapsiblePurpose: Show complete booking record, agreed terms and current state.
+* Header: booking reference, service/category, created date, booking status and separate payment status.
+* Timeline: request submitted, provider review, accepted, awaiting payment, payment confirmed, in progress, completion confirmation, settlement and completed. Provide alternate timelines for declined/cancelled/expired/disputed.
+* Customer/provider identities and links; service details, location, agreed quantity/duration/dates and instructions.
+* Financial details: agreed base amount, extra fees, logistics, total, payment reference/status and refund information.
+* Status history with timestamp, actor and explanation; conversation preview and link.
+* State-dependent actions: pay, cancel, request modification, contact participant, confirm completion, report issue, dispute and review.
+Links and behaviour: Only authorised participants may access the booking. Backend state and permissions determine available actions.
+3.10 Booking Messages
+ROUTE/dashboard/bookings/:bookingId/messagesPRESENTATIONConversation page; reuse Conversation implementationPurpose: Provide communication linked to one booking.
+* Show booking reference, service, participants and message history.
+* Support text, timestamps, read indicators, validated attachments and message composer.
+* Provide booking summary, Booking Details link and report conversation action.
+* Restrict access to booking participants and authorised staff.
+3.11 Booking Completion
+ROUTE/dashboard/bookings/:bookingId/completionPRESENTATIONFull page or contextual panel/modalPurpose: Capture independent service completion confirmations.
+* Customer view: booking summary, provider completion statement/evidence if supplied, Confirm Completion and Report Issue/Dispute actions.
+* Provider view: booking summary, Mark Delivered, completion notes/evidence upload and customer confirmation state.
+* Record each participant's own confirmation, identity and timestamp.
+* States: awaiting provider, awaiting customer, both confirmed, dispute opened, settlement eligible, settlement processing and completed.
+* Never allow one participant to confirm on behalf of the other.
+3.12 My Services
+ROUTE/dashboard/servicesPRESENTATIONFull page; listing statuses are tabsPurpose: Manage every service listing owned by the user.
+* Summary: total, active, draft, pending review, paused, rejected and archived.
+* Tabs: All, Active, Draft, Pending Review, Paused, Rejected and Archived.
+* Listing record: image, title, category, location, price, status, created/updated dates, views/enquiries/requests if tracked and availability.
+* Search by title; filter by category, status, date and location.
+* Actions: view, edit, pause, activate, delete draft, archive, availability, requests, performance and duplicate if supported.
+* Support multiple listings across categories under one account.
+Links and behaviour: Add a Service opens creation; listing opens Service Details/Management; edit, availability, performance and requests open corresponding destinations.
+3.13 Add Service
+ROUTE/dashboard/services/newPRESENTATIONFull page multi-step form; discard confirmation may be modalPurpose: Create and submit a service listing.
+* Step 1: select farmland leasing, machinery rental, farm labour, training or another enabled category.
+* Step 2: title, description, category/subcategory and service location.
+* Step 3: category fields. Farmland: size/unit, location, land use, soil/water/access details, lease terms and relevant evidence. Machinery: type, make/model, condition, specifications, rental basis, operator, delivery and maintenance. Labour: work type, skills, experience, team size, coverage, pricing and availability. Training: course, subject, outcomes, instructor, format, duration, schedule, price, materials and certificate details.
+* Step 4: price, currency, unit, minimum quantity/duration, extra charges, delivery fee, fixed/negotiable and quotation requirement.
+* Step 5: available/blocked dates, recurring days, lead time and concurrent booking limits.
+* Step 6: cover/additional images, optional video, captions, validation and upload progress.
+* Step 7: category-relevant verification documents/declarations. Uploading evidence must not mean verification is approved.
+* Step 8: preview and edit sections.
+* Step 9: save draft, submit for review or publish when permitted.
+Links and behaviour: Category determines fields; verification links to Verification Centre; draft returns to My Services; submission opens Service Details/Management with current status.
+3.14 Edit Service
+ROUTE/dashboard/services/:listingId/editPRESENTATIONFull page multi-step form; destructive confirmations may be modalPurpose: Edit an existing listing owned by the current user.
+* Load existing values and category-specific fields.
+* Edit description, attributes, price, availability, media and relevant verification details.
+* Add/remove images and preview changes; save or cancel.
+* Require review for changes where policy requires it.
+* Do not rewrite terms on already accepted bookings; preserve booking snapshots.
+* Explain why paused/rejected listings cannot be activated until required changes are completed.
+3.15 Service Details/Management
+ROUTE/dashboard/services/:listingIdPRESENTATIONFull page; management sections may be tabsPurpose: Consolidate management of one listing.
+* Show title, category, image, description, location, price, availability, listing status and verification state.
+* Show performance summary, incoming requests, recent bookings and reviews where available.
+* Actions: edit, pause/activate, view public listing, availability, requests, performance and archive.
+* Restrict access to owner and authorised staff.
+3.16 Service Availability
+ROUTE/dashboard/services/:listingId/availabilityPRESENTATIONFull page or Availability tab; date editor may be modalPurpose: Manage when a service can be booked.
+* Calendar of available, blocked, booked and pending-reservation dates where relevant.
+* Weekly/monthly views and time slots for time-based services.
+* Add available dates, block dates, change times, recurring availability and remove availability.
+* Set minimum notice, maximum duration and concurrent booking limits where supported.
+* Link dates to bookings and prevent conflicts with server-side availability checks.
+3.17 Service Performance
+ROUTE/dashboard/services/:listingId/performancePRESENTATIONFull page or Performance tabPurpose: Show measurable listing activity.
+* Views, search appearances, enquiries, booking requests, accepted/completed bookings, revenue and reviews only where tracked.
+* Date filters, trends and clear metric definitions.
+* Show conversion rates only when sufficient underlying data exists.
+* Offer evidence-based improvement suggestions without fabricated metrics or promised outcomes.
+3.18 Service Requests
+ROUTE/dashboard/service-requestsPRESENTATIONFull page; statuses are tabs; filters may use drawerPurpose: Show requests received for the user's listings.
+* Summary: new, awaiting response, accepted, declined, expired and converted to bookings.
+* Request rows/cards: reference, customer, listing/category, requested date, location, quantity/duration, description, proposed amount, received date, deadline if configured and status.
+* Filters by listing, category, status, date and customer.
+* Actions: view, accept, decline, ask a question, propose date/price and request more information.
+Links and behaviour: Request opens Incoming Request Details; customer opens profile; message opens Conversation; accepted request creates/updates Booking Details.
+3.19 Incoming Request Details
+ROUTE/dashboard/service-requests/:requestIdPRESENTATIONFull page or detail drawer from request listPurpose: Give the provider information needed to decide on a request.
+* Show request reference, customer, listing, category, location, date/duration, quantity, requirements, attachments, price proposal, availability and previous communication.
+* Actions: accept, decline, request clarification, message customer, propose alternative date or revised price.
+* Acceptance must confirm scope, date, availability, price, additional charges and terms; update/create booking and notify customer.
+* Customer must see and agree to final terms before payment.
+3.20 Messages
+ROUTE/dashboard/messagesPRESENTATIONFull page; split-pane list/detail on wide screensPurpose: Provide a central communication inbox.
+* Conversation search/list with participant, avatar, associated booking/listing, last-message preview/time and unread count.
+* Filters: all, unread, booking conversations, general enquiries and archived.
+* Actions: open, search messages, mark unread, archive and report/block where policy permits.
+* Only participants and authorised staff may access conversation data.
+3.21 Conversation
+ROUTE/dashboard/messages/:conversationIdPRESENTATIONFull page or conversation detail panePurpose: Display and manage an individual conversation.
+* Participant identity/profile link and online/last-active state only if supported and privacy-compliant.
+* Associated listing or booking; message history, timestamps, read state, composer, send action and validated attachments.
+* Booking/listing summary links, report/block controls and participant-only access.
+3.22 Payments & Earnings
+ROUTE/dashboard/financePRESENTATIONFull page; Overview, Transactions, Earnings, Payouts and Payment Methods are tabsPurpose: Provide a consolidated view of financial activity.
+* Summary: customer booking payments, provider earnings, pending provider earnings, payout-eligible balance, completed payouts and refunds where applicable.
+* Finance sections: Overview, Transactions, Earnings, Payouts and Payment Methods.
+* Recent transactions: reference, booking reference, type, amount, date, status and detail link.
+* Explain customer payments, provider earnings, commission, pending settlement, completed payouts and refunds.
+* All figures must derive from verified transaction/ledger records.
+3.23 Payment Details
+ROUTE/dashboard/finance/transactions/:transactionIdPRESENTATIONFull page or transaction detail drawerPurpose: Show one financial transaction.
+* Transaction/gateway references, booking reference, type, amount/currency, date, method description if available, status, verification state, fees and refund status.
+* Transaction timeline and booking link.
+* Actions: view booking, download/print receipt if supported and contact support.
+* Never display full card details or sensitive payment credentials.
+3.24 Earnings
+ROUTE/dashboard/finance/earningsPRESENTATIONFull page or Earnings tabPurpose: Show provider-side earnings.
+* Gross provider revenue, TerraTills commission, other deductions, net earnings, pending earnings, payout-eligible earnings and paid amounts.
+* Breakdown by listing/date; filters for date range, category, listing, booking and payout status.
+* Link each earning to booking and payout records.
+* Only show payout-eligible funds after completion, dispute and settlement conditions are satisfied.
+3.25 Payouts
+ROUTE/dashboard/finance/payoutsPRESENTATIONFull page or Payouts tab; confirmation may be modalPurpose: Show provider payout balances and history.
+* Available, pending, completed and failed payout amounts; masked destination account; reference; initiation/completion dates; amount and status.
+* Statuses: pending, processing, successful, failed, reversed and on hold.
+* Allow user-initiated payout only if approved business rules and Bach capabilities support it.
+* Verify and reconcile transfers; prevent duplicate payouts.
+* Actions: view payout, update payout account where permitted and contact support.
+3.26 Payment Methods
+ROUTE/dashboard/finance/payment-methodsPRESENTATIONFull page or tab; add/edit may be modal/drawerPurpose: Manage customer payment methods and provider payout destinations.
+* Separate customer payment methods from provider payout accounts.
+* Show masked account details, account holder, bank, verification state and default status where relevant.
+* Add/update/set default/remove only where provider capabilities and policy permit.
+* Do not store or display sensitive payment credentials in frontend code.
+* Bach is selected; verify its actual supported payment, settlement, transfer, refund, webhook and payout capabilities before enabling dependent functions.
+3.27 Reviews
+ROUTE/dashboard/reviewsPRESENTATIONFull page; Received, Given and Awaiting My Review are tabsPurpose: Show reviews received and written by the user.
+* Received: reviewer, service, booking reference, rating, feedback, date and provider response if present.
+* Given: service, provider, rating, comment, submission date and permitted edit/report actions.
+* Awaiting: eligible completed booking, service, participant and Write Review action.
+* Provide moderation and reporting.
+3.28 Write Review
+ROUTE/dashboard/reviews/new/:bookingIdPRESENTATIONFull page or modal from eligible bookingPurpose: Collect feedback about a completed booking.
+* Show booking, service and person being reviewed.
+* Collect overall rating and written review; optional category ratings for service quality, communication, reliability, listing accuracy, timeliness and satisfaction.
+* Optional supporting image only if policy permits.
+* Submit/cancel; enforce completed-booking eligibility, participant validation and duplicate-review rules.
+3.29 Saved Items
+ROUTE/dashboard/savedPRESENTATIONFull pagePurpose: Allow users to revisit bookmarked listings.
+* Show listing image, title, category, provider, location, price, availability, rating if available and date saved.
+* Search, category filter, sort by date/price, remove, share and open listing.
+* Empty state links to Explore Services.
+3.30 Notifications
+ROUTE/dashboard/notificationsPRESENTATIONFull page; category filters may be tabs/chipsPurpose: Show platform updates and actionable alerts.
+* Categories: bookings, service requests, messages, payments, payouts, reviews, verification, security, support and announcements.
+* Each notification contains title, summary, timestamp, read state, related record and destination.
+* Actions: mark read, mark all read, filter, open related page and delete where policy permits.
+* Examples: new request, accepted booking, verified payment, completed payout, new message, listing changes required and verification decision.
+* Each notification must open the exact related record.
+3.31 Help Centre
+ROUTE/dashboard/supportPRESENTATIONFull page; articles may open as nested pagesPurpose: Provide self-service help and access to support.
+* Searchable help articles and FAQs.
+* Topics: account setup, discovery, listing creation, booking, payment, delivery, completion, refunds/disputes, payouts, verification and security.
+* Actions: search/open article, create ticket and view existing tickets.
+3.32 Create Support Ticket
+ROUTE/dashboard/support/newPRESENTATIONFull page or short-form modalPurpose: Allow the user to submit a support request.
+* Collect issue category, subject, description, optional booking/transaction reference, validated attachments and supported contact preference.
+* Categories: booking, payment, payout, service quality, listing, verification, account access, safety/misconduct, technical issue and other.
+* On submission return ticket reference, date, status and link to ticket details.
+3.33 Support Ticket Details
+ROUTE/dashboard/support/:ticketIdPRESENTATIONFull pagePurpose: Show ticket history and status.
+* Ticket reference, subject, category, description, submission date, status and assigned support team/member where appropriate.
+* Conversation, support replies, attachments and resolution details.
+* Actions: reply, add evidence, reopen/close where permitted and rate support after resolution.
+3.34 User Profile
+ROUTE/dashboard/profilePRESENTATIONFull pagePurpose: Display the user's public-facing profile and account summary.
+* Profile image, display name, biography, general location, member-since date, verification state, rating and review count.
+* Profile information: public name, biography, location, areas served, skills/experience and privacy-controlled contact details.
+* Active services with category, price, location and listing links.
+* Reputation: reviews and measurable completed-booking/provider indicators if TerraTills elects to display them.
+* Actions: Edit Profile, Verification Centre, Settings and view public profile.
+* Do not expose private home address, identity-document numbers, bank details or private contact information without authorised purpose and consent.
+3.35 Edit Profile
+ROUTE/dashboard/profile/editPRESENTATIONFull page or modal for limited editsPurpose: Update personal and public profile information.
+* Fields: profile image, first/last name, display name, username if used, email, phone, biography, state, LGA, town/community, service areas, skills/experience and preferred language.
+* Identify public and private fields.
+* Support save/cancel, image change and appropriate email/phone verification.
+3.36 Verification Centre
+ROUTE/dashboard/verificationPRESENTATIONFull page; verification types/statuses may be tabsPurpose: Centralise identity and service-specific verification.
+* Account verification: email, phone and identity status, submission/review dates and rejection reason where applicable.
+* Service verification: authority to lease farmland, machinery ownership/authority, relevant machinery inspection, training credentials and other category-specific evidence.
+* Statuses: not started, required, submitted, under review, approved, rejected, resubmission required and expired where applicable.
+* Actions: start/continue, upload missing document, view requirements/history and contact support.
+* Only require evidence relevant to the user's activity; booking a tractor does not require machinery ownership verification.
+3.37 Verification Submission
+ROUTE/dashboard/verification/:typePRESENTATIONFull page multi-step form; upload preview may be modalPurpose: Submit one verification request.
+* Identify verification type and explain why it is required; list accepted documents.
+* Collect relevant details, secure uploads, declarations and consent.
+* Show upload progress, submission confirmation and status.
+* Restrict private documents to authorised verification staff and the submitting user as appropriate.
+* Define secure storage, access logging, retention and deletion.
+3.38 Account Settings
+ROUTE/dashboard/settingsPRESENTATIONFull page settings indexPurpose: Provide access to account controls and preferences.
+* Links to Security, Notification Preferences, Privacy, Location & Addresses, Language & Accessibility and Account Deactivation.
+* Show account status and relevant pending actions.
+3.39 Security Settings
+ROUTE/dashboard/settings/securityPRESENTATIONFull page or Security tabPurpose: Manage account security.
+* Change password with appropriate current-password confirmation, new password and confirmation; validate password strength.
+* Two-factor authentication if implemented; active sessions; recent login activity; sign out other sessions; security alerts.
+* Require reauthentication for sensitive actions.
+3.40 Notification Preferences
+ROUTE/dashboard/settings/notificationsPRESENTATIONFull page or Notifications tabPurpose: Manage supported notification channels.
+* Categories: bookings, incoming requests, messages, payments, payouts, reviews, verification, support and announcements.
+* Channels: in-app, email, SMS and push where implemented.
+* Allow category-specific preferences where permitted; essential security/transaction communications may remain mandatory.
+3.41 Privacy Settings
+ROUTE/dashboard/settings/privacyPRESENTATIONFull page or Privacy tabPurpose: Manage profile visibility and data preferences.
+* Public profile visibility, field visibility, location/contact display and search visibility where supported.
+* Consent/data-use information, privacy policy, data requests, data export if implemented and deletion information.
+3.42 Location & Addresses
+ROUTE/dashboard/settings/locationsPRESENTATIONFull page or tab; add/edit address may be modal/drawerPurpose: Manage user locations and saved addresses.
+* Default state, LGA and town/community; saved service locations and delivery addresses.
+* Add, edit, delete and set default address.
+* Distinguish home, business, farmland, machinery and service-request locations and store/display each according to its purpose.
+3.43 Language & Accessibility
+ROUTE/dashboard/settings/preferencesPRESENTATIONFull page or Preferences tabPurpose: Manage language, regional and accessibility preferences.
+* Preferred language, date/time formats, currency display, supported text-size/accessibility preferences and reduced motion where implemented.
+* Save and apply preferences consistently.
+* Support Nigerian launch localisation while allowing future localisation.
+3.44 Account Deactivation
+ROUTE/dashboard/settings/accountPRESENTATIONFull page; final confirmation must be modalPurpose: Allow deactivation/deletion requests subject to platform obligations.
+* Show account status, explanation, data-retention information and outstanding booking/payment/payout warnings.
+* Explain effects on active bookings, disputes, financial records and personal data.
+* Require clear confirmation and appropriate reauthentication.
+* Do not allow deactivation to bypass legitimate booking, financial, dispute or legal obligations.
+3.45 AI Agricultural Assistant
+ROUTE/dashboard/assistantPRESENTATIONFull page; conversation history may be a drawerPurpose: Help users describe needs, understand services and discover suitable listings.
+* Conversation history, new conversation, text input, send action, suggested questions and optional validated attachments.
+* Extract category, location, quantity, date, duration, budget and requirements from natural language; allow user review/correction.
+* Discover listings by querying actual TerraTills records; explain matches and link to real listings. Never invent inventory, prices, providers or availability.
+* Estimate costs from platform data and explicit assumptions; label estimates and explain insufficient evidence.
+* Provide general agricultural/marketplace guidance, provider checklists, booking-status explanations and next-step links.
+* Assist listing descriptions and identify missing information; user reviews/approves changes.
+* AI cannot approve identity/ownership, certify machinery, approve providers, initiate payment, confirm completion, change authoritative booking status or release funds.
+Links and behaviour: Listing suggestions open Listing Details; search opens Explore; extracted details may prefill Booking Request only after user confirmation; booking help opens Booking Details; listing help opens Add/Edit Service; support issues open Help Centre.
+4. Shared behaviour and presentation rules
+Global navigation
+* Persistent navigation to dashboard overview and primary destinations; global search, notifications, messages, help, profile menu and Add a Service action.
+* Profile menu contains profile image, display name, email where appropriate, verification status, View Profile, Edit Profile, Settings, Help and Sign Out.
+Breadcrumbs and context retention
+* Show page hierarchy and link to valid parent pages.
+* Preserve search query, filters, sort order, pagination and scroll context when returning from a listing.
+* Notification/deep links open the exact related record.
+Reusable records
+* Listing summary includes image, title, category, provider, verification, location, price basis, rating if available, availability and save action.
+* Booking summary includes reference, service, other participant, dates, amount, booking status, payment status and next permitted action.
+States and errors
+* All statuses have text and must not rely on colour alone.
+* Support loading, empty, success, validation error, network error, offline, expired session and permission-denied states.
+* Show clear outcomes and safe retry behaviour for save, publish, payment, cancellation, upload and submission.
+Tabs, drawers and modals
+* Tabs group closely related content: booking statuses, listing statuses, finance sections, review groups, verification groups and settings sections.
+* Drawers are for contextual filters, conversation history, request details and secondary details where the user should retain the current page context.
+* Modals are for short confirmations, destructive-action confirmation, image viewing and concise quick tasks/forms.
+* Do not put long or multi-step workflows in modals. Booking requests, service creation and verification submissions remain full-page workflows.
+* Represent tab/drawer/modal state in route or query state when it needs to be shareable or restorable.
+5. Data and state requirements
+5.1 Data groups required by the dashboard
+Data groupRequired informationUserAccount ID, name, email, phone, status, creation dateProfileProfile image, biography, location, preferences, visibilityService listingsOwner, category, description, price, location, status, category attributesListing mediaMedia references, captions, display order, access policyAvailabilityAvailable/blocked dates, slots, booking limitsBooking requestsCustomer, listing, requirements, proposed date/amount, request statusBookingsParticipants, agreed terms, dates, reference, booking statusBooking historyActor, old/new state, timestamp, explanationMessagesConversation, sender, recipient, content, timestamp, read state, attachmentsPaymentsAmount, currency, gateway reference, booking reference, payment stateEarningsGross amount, commission, deductions, net amount, eligibilityPayoutsDestination reference, amount, provider reference, status, reconciliationReviewsReviewer, recipient, booking, rating, comment, moderation stateSaved listingsUser, listing, saved dateNotificationsUser, category, content, read state, related entity, destinationVerificationType, evidence, review status, reviewer, timestampsSupportTicket, category, messages, attachments, statusAI recordsConversation, input, extraction, linked results, audit metadataAudit logsActor, action, affected record, timestamp, metadata5.2 Independent state machines
+Booking, payment and settlement statuses must be stored independently. A booking can be accepted while payment is pending; payment can be successful while service delivery is incomplete.
+Booking: draft; pending_provider_response; awaiting_clarification; accepted; awaiting_payment; confirmed; in_progress; awaiting_completion_confirmation; completed; declined; cancelled; disputed; expired
+Payment: not_required; pending; processing; successful; failed; refunded; partially_refunded; reversed; on_hold
+Settlement: not_eligible; awaiting_completion_confirmation; on_hold; eligible; processing; paid; failed; reversed
+The backend is the source of truth for transitions. The frontend displays state and offers only actions permitted by state, participant role and permissions.
+6. Detailed prompt to build all dashboard pages
+Use the following prompt with a software development agent or engineering team. It specifies functional implementation, page content, routes, data relationships and acceptance criteria. It deliberately excludes visual design features such as colours, typography, imagery, styling, animations and aesthetic direction.
+6.1 Implementation prompt
+PROJECT: TERRATILLS USER DASHBOARD - COMPLETE FUNCTIONAL IMPLEMENTATION
+ 
+Act as a senior full-stack software engineer and product implementation agent. Build the complete authenticated user dashboard for TerraTills, a Nigeria-first agricultural services marketplace. Implement the actual pages, routes, data handling and working interactions in this specification. Do not deliver static mockups or non-functional placeholder buttons.
+ 
+NON-NEGOTIABLE PRODUCT RULES
+1. One account and one unified dashboard. Do not create separate, mutually exclusive account types for farmers, labourers, landowners, machinery owners or customers.
+2. A user can offer several services and request services from other users through the same account.
+3. Customer and provider are contextual participant roles on an individual request/booking, not permanent account types.
+4. Listings are owned by users and categorised. Initial categories: farmland leasing, machinery rental, farm labour and agricultural training/tutorials. Allow future categories.
+5. Staff roles/permissions are separate. Do not add staff administration pages to this user dashboard.
+6. Enforce authentication, ownership and record-level authorisation on the server/API, not merely by hiding frontend controls.
+7. Booking, payment and settlement states are independent.
+8. A booking request is not a paid or confirmed booking. Provider acceptance and agreement on scope, date, price and terms must precede payment.
+9. Verify payment server-side using supported provider APIs/webhooks. A browser redirect is not proof of payment.
+10. Do not call the arrangement escrow unless the payment provider and legal structure explicitly support that term.
+11. AI may assist discovery, extraction, estimates and guidance. It must not approve identity/ownership, certify machinery, approve providers, initiate payments, confirm completion, alter authoritative booking status or release funds.
+12. Bach is the selected payment provider. Do not silently replace it. Confirm its actual APIs, supported payment flows, webhooks, settlement timing, transfers/payouts, refunds and compliance requirements. If a required capability is unavailable, isolate it behind a provider adapter and document the dependency; do not simulate a successful financial operation.
+ 
+GENERAL IMPLEMENTATION REQUIREMENTS
+- Implement every route and functional page listed below.
+- Use reusable components, typed domain models, validated contracts and maintainable feature modules.
+- Connect pages through functional navigation and contextual links.
+- Use server-side pagination/filtering for large lists.
+- Preserve search/filter/sort state when users open a listing and return.
+- Implement loading, empty, error, success, offline, expired-session and permission-denied states.
+- Validate all input on client and server.
+- Do not present hardcoded sample data as live platform data. If a demo adapter is necessary, clearly label demo data and isolate it from production services.
+- Every visible action must work or be disabled with a clear reason.
+- Never invent payment, verification, payout or AI outcomes.
+- Protect every authenticated route and every record by participant/owner permissions.
+ 
+IMPLEMENT ALL 45 LOGICAL DESTINATIONS
+ 
+1. /dashboard - Dashboard Overview. Show greeting/profile completion/verification; booking counts; services listed; incoming requests; provider earnings and pending payouts; quick actions; recent bookings; owned listings; incoming requests; transactions; notifications and AI assistant shortcut. Customer spending must not be counted as provider earnings. Link every item to its exact record.
+ 
+2. /dashboard/explore - Explore Services. Implement service search, category discovery, location/price/availability/rating/verification filters, featured/recommended listings and recently viewed items where supported. Link categories and listings to their detail routes. AI-assisted discovery must use actual platform data.
+ 
+3. /dashboard/explore/search - Search Results. Show query, count, filter chips, sort, results, pagination/load-more, clear filters and no-result states. Preserve query/filter/sort/page context.
+ 
+4. /dashboard/explore/category/:slug - Service Category. Show category-specific filters and listing information. Farmland: size/unit, location, soil details where known, land use, irrigation/water, access, lease duration, price, availability and authority verification. Machinery: type, make/model, condition, capacity/specifications, rental basis, operator, delivery, fuel/operating terms, maintenance and availability. Labour: work type, skills, experience, worker count, location, duration, pricing and availability. Training: course, subject, instructor, outcomes, format, duration, schedule, price, materials and certificate availability if offered.
+ 
+5. /dashboard/listings/:listingId - Listing Details. Display media, listing details, category attributes, provider information/verification, price breakdown, availability, reviews, location, trust information and related listings. Implement Book, Enquire/Message, Save, Share, Report and View Provider actions. Use real listing/provider data.
+ 
+6. /dashboard/bookings/new/:listingId - Booking Request. Build a validated category-aware form. Collect contact details, service location, category requirements, date/duration/quantity, additional instructions, permitted attachments, estimate and terms consent. Allow review/edit before submission. Submission creates a pending request only; do not charge before provider acceptance and agreement.
+ 
+7. /dashboard/bookings/:bookingId/confirmation - Booking Confirmation. Show reference, submitted details, provider, requested date, estimate/amount, status and next step. Link to Booking Details and messaging.
+ 
+8. /dashboard/bookings - My Bookings. List all, pending, awaiting payment, active, completed, cancelled and disputed bookings. Show reference, service, provider, dates, amount and separate booking/payment statuses. Offer only state-permitted actions.
+ 
+9. /dashboard/bookings/:bookingId - Booking Details. Show participants, listing snapshot, agreed scope/price/dates/terms, timeline, separate payment/settlement states, status history, communication and state-dependent actions. Restrict to booking participants/authorised staff.
+ 
+10. /dashboard/bookings/:bookingId/messages - Booking Messages. Reuse messaging infrastructure and associate the conversation with the booking.
+ 
+11. /dashboard/bookings/:bookingId/completion - Booking Completion. Let provider and customer record their own completion confirmations independently. Record actor and timestamp. Provide issue/dispute path. Never allow one participant to confirm for the other.
+ 
+12. /dashboard/services - My Services. List all listings owned by the user across categories. Include All, Active, Draft, Pending Review, Paused, Rejected and Archived groups; search/filter; view/edit/pause/activate/archive/availability/requests/performance actions.
+ 
+13. /dashboard/services/new - Add Service. Multi-step creation: category; basic information; category-specific attributes; pricing; availability; media; relevant verification evidence/declarations; preview; save draft or submit/publish when permitted. Validate category fields. Uploading evidence must not automatically mark verification approved.
+ 
+14. /dashboard/services/:listingId/edit - Edit Service. Load and edit the user's own listing, including category attributes, pricing, availability and media. Some edits may require review. Preserve historical snapshots of accepted booking terms.
+ 
+15. /dashboard/services/:listingId - Service Details/Management. Show listing status, details, verification, performance summary, requests, bookings and reviews. Provide edit, pause/activate, public listing, availability, requests, performance and archive actions.
+ 
+16. /dashboard/services/:listingId/availability - Service Availability. Manage available/blocked/booked dates, recurring schedules, time slots where relevant, lead time, maximum duration and concurrent booking limits. Prevent conflicts with server-side checks.
+ 
+17. /dashboard/services/:listingId/performance - Service Performance. Show only collected metrics: views, search appearances, enquiries, requests, accepted/completed bookings, revenue and reviews. Include date filters and metric definitions. Do not fabricate metrics.
+ 
+18. /dashboard/service-requests - Service Requests. List incoming requests with status groups, search and filters. Show customer, listing, requested date, location, quantity/duration, description, proposed amount, received date and status.
+ 
+19. /dashboard/service-requests/:requestId - Incoming Request Details. Show request/customer/listing information, attachments, date, quantity, price proposal, availability and communication. Allow accept, decline, clarification, message, alternative date or revised price. Acceptance must record agreed scope/date/price/charges/terms, create/update booking and notify customer. Customer must review terms before payment.
+ 
+20. /dashboard/messages - Messages. Implement inbox, search, unread counts, conversation previews and filters for all, unread, booking, general enquiry and archived.
+ 
+21. /dashboard/messages/:conversationId - Conversation. Implement history, timestamps, read state, composer, send, validated attachments, participant information and related booking/listing links. Restrict to participants and authorised staff. Support report/block according to policy.
+ 
+22. /dashboard/finance - Payments & Earnings. Financial overview and sections for transactions, earnings, payouts and payment methods. Separate customer booking payments from provider revenue/earnings. Use verified records.
+ 
+23. /dashboard/finance/transactions/:transactionId - Payment Details. Show transaction/gateway references, booking reference, type, amount, currency, date, status, verification state, fees and refund state. Never expose full card/bank credentials.
+ 
+24. /dashboard/finance/earnings - Earnings. Show gross provider revenue, commission, deductions, net earnings, pending amounts, payout-eligible amounts and paid amounts. Link to bookings/payouts. Funds are eligible only after completion, dispute and settlement checks.
+ 
+25. /dashboard/finance/payouts - Payouts. Show available, pending, completed and failed payouts; masked destination; references; dates; amount and state. Permit user withdrawal only if approved rules and Bach capabilities support it. Verify/reconcile transfers and prevent duplicate payouts.
+ 
+26. /dashboard/finance/payment-methods - Payment Methods. Separate customer payment methods from provider payout accounts. Show masked details and verification/default state. Add/update/remove only where supported. Never expose sensitive credentials.
+ 
+27. /dashboard/reviews - Reviews. Implement Received, Given and Awaiting My Review groups. Show reviewer/reviewee, service, booking, rating, comment, date and moderation/response state.
+ 
+28. /dashboard/reviews/new/:bookingId - Write Review. Allow eligible participants of completed bookings to submit rating and feedback, with optional category ratings. Enforce eligibility and duplicate rules. Support moderation/reporting.
+ 
+29. /dashboard/saved - Saved Items. List saved listings with search, category filters, sorting, remove/share/open actions and empty state.
+ 
+30. /dashboard/notifications - Notifications. Support booking, request, message, payment, payout, review, verification, security, support and platform notifications. Every notification links to its exact related record. Support read/unread, mark all read and category filtering.
+ 
+31. /dashboard/support - Help Centre. Searchable help articles/FAQs for accounts, listings, bookings, payments, delivery, completion, refunds/disputes, payouts, verification and security.
+ 
+32. /dashboard/support/new - Create Support Ticket. Collect category, subject, description, optional booking/transaction reference, validated attachments and supported contact preference. Return ticket reference/status.
+ 
+33. /dashboard/support/:ticketId - Support Ticket Details. Show ticket history, conversation, replies, attachments and resolution. Allow replies and permitted reopen/close actions.
+ 
+34. /dashboard/profile - User Profile. Show public profile image/name, biography, general location, member-since date, verification, ratings/reviews and active services. Respect privacy; do not expose private address, identity numbers or bank details.
+ 
+35. /dashboard/profile/edit - Edit Profile. Edit image, name/display name, username if used, email, phone, biography, location, service areas, skills/experience and language. Identify public/private fields and require appropriate contact verification.
+ 
+36. /dashboard/verification - Verification Centre. Show account and service-specific verification requirements, submissions, statuses, review dates and rejection reasons. Request only evidence relevant to the user's activity.
+ 
+37. /dashboard/verification/:type - Verification Submission. Explain requirement and accepted evidence; collect details, secure uploads, declarations and consent; show status. Restrict private documents to authorised users/staff.
+ 
+38. /dashboard/settings - Account Settings. Link to security, notification preferences, privacy, locations/addresses, language/accessibility and account deactivation.
+ 
+39. /dashboard/settings/security - Security Settings. Password changes, two-factor authentication if implemented, active sessions, recent login activity, sign out other sessions and alerts. Reauthenticate sensitive actions.
+ 
+40. /dashboard/settings/notifications - Notification Preferences. Manage category-specific in-app/email/SMS/push channels where implemented. Preserve mandatory security/transaction notifications where policy requires.
+ 
+41. /dashboard/settings/privacy - Privacy Settings. Profile/field/location/contact/search visibility, data-use information, privacy policy, data requests/export where implemented and deletion information.
+ 
+42. /dashboard/settings/locations - Location & Addresses. Manage default region, service locations and delivery addresses. Distinguish home, business, farmland, machinery and service-request locations.
+ 
+43. /dashboard/settings/preferences - Language & Accessibility. Manage language, date/time formats, currency and supported accessibility preferences.
+ 
+44. /dashboard/settings/account - Account Deactivation. Explain impact on bookings, disputes, financial records and data retention. Require confirmation and reauthentication. Do not permit evasion of legitimate obligations.
+ 
+45. /dashboard/assistant - AI Agricultural Assistant. Implement history, new conversation, chat input and suggested prompts. Extract category/location/quantity/date/duration/budget/requirements and let user confirm/correct. Query real listings. Ground estimates in platform data and show assumptions. Provide guidance and listing assistance with user approval. AI cannot execute privileged or financial actions.
+ 
+DATA MODEL
+Implement a unified user record with profile, service listings, categories, category-specific attributes, listing media, availability, booking requests, bookings, participants, booking status history, payment transactions, payment allocations/ledger, provider settlements, payouts, reviews, saved listings, notifications, conversations, participants, messages, attachments, verification requests/documents/reviews, support tickets/messages, AI conversations/messages/extractions and audit logs. Use foreign keys, indexes, uniqueness constraints and transactional boundaries. A user may own many listings and participate in bookings as customer or provider. Store agreed booking terms as a snapshot so later listing edits do not rewrite accepted agreements.
+ 
+STATE MACHINES
+Booking states: draft, pending_provider_response, awaiting_clarification, accepted, awaiting_payment, confirmed, in_progress, awaiting_completion_confirmation, completed, declined, cancelled, disputed and expired.
+Payment states: not_required, pending, processing, successful, failed, refunded, partially_refunded, reversed and on_hold.
+Settlement states: not_eligible, awaiting_completion_confirmation, on_hold, eligible, processing, paid, failed and reversed.
+Define permitted transitions on the server. The client must not directly set authoritative states.
+ 
+PAYMENT SAFEGUARDS
+Use a Bach provider adapter only after confirming its API and operational/legal capabilities. Verify payments server-side and validate webhook signatures where supported. Use idempotency keys, immutable transaction references, duplicate-event protection, ledger-style records, reconciliation and duplicate-payout prevention. Keep gateway state separate from TerraTills booking/payment/settlement states. Do not simulate money movement in production. If Bach cannot support a required hold/transfer/payout flow, identify the missing capability and do not claim the flow is operational.
+ 
+SECURITY AND PRIVACY
+Enforce authentication and record-level authorisation on every route/API. Validate input server-side and client-side. Prevent unauthorised access to listings, bookings, messages, documents and financial records. Secure private uploads. Rate-limit sensitive operations. Audit financial/security actions. Minimise personal data in logs and AI prompts. Never expose secrets or payment credentials to the browser.
+ 
+TABS, DRAWERS AND MODALS
+Use tabs for related groups such as booking statuses, listing statuses, finance sections, review groups, verification groups and settings sections. Use drawers for contextual filters, conversation history, request details and secondary detail views that should preserve list context. Use modals for short confirmations, destructive-action confirmation, image viewing and concise quick tasks. Keep long/multi-step booking, service creation and verification workflows as full pages. Preserve route/context where appropriate.
+ 
+ACCEPTANCE TESTS
+1. One user can own multiple service categories and book another user's service without changing account type.
+2. Search, filters, listing details, saved items and provider profiles use actual records.
+3. Customer submits request; provider responds; agreed terms are recorded; customer can then pay.
+4. Booking/payment/settlement states are separate and transition only through authorised server logic.
+5. Customer and provider completion confirmations are independent.
+6. Finance separates customer spend, gross provider revenue, commission, net earnings, pending funds and paid payouts.
+7. Messages, notifications, reviews and support tickets link to correct records.
+8. Verification documents remain private and status changes are traceable.
+9. AI recommendations refer only to real records and AI cannot perform privileged/financial actions.
+10. Every page has loading, empty, error, success and permission states.
+11. All routes work at supported screen sizes and all visible actions work or are disabled with an explanation.
+12. Tests cover permissions, booking transitions, payment verification, duplicate webhooks, settlement eligibility, payout idempotency, reviews and category-specific validation.
+ 
+DELIVERABLES
+- Complete functional dashboard pages and route navigation.
+- Reusable components, typed domain models and API contracts.
+- Database schema/migrations and development-only seed data.
+- Server-side validation and authorisation.
+- Automated tests for critical flows and state transitions.
+- Setup/run instructions and environment variable documentation.
+- A clear list of external dependencies and unverified provider capabilities.
+- Never claim production readiness for features using mock data or unverified payment functionality.
+7. Implementation boundaries
+* The inventory contains 45 logical destinations. Related destinations may share a page template and be implemented as tabs, drawers or modals as specified; they do not all need separate page components.
+* Tabs group related content; drawers preserve context for secondary tasks; modals handle short confirmations and concise tasks. Long workflows remain full pages.
+* This document specifies page scope and functionality only. It intentionally does not prescribe visual design features, images, colours, typography, animation or external pages.
+* Payment and payout functionality depends on confirmation of Bach's actual technical and operational capabilities. Do not represent unsupported fund-holding or payout behaviour as implemented.
+* Optional metrics and features should only appear when TerraTills collects the underlying data and defines the calculation.
+TERRATILLS  |  USER DASHBOARD SPECIFICATION
+
+TerraTills User Dashboard Specification  •  Page 1
+
