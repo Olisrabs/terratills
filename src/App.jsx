@@ -17,6 +17,8 @@ import ContactPage from './pages/public/ContactPage';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
+import VerifyPhonePage from './pages/auth/VerifyPhonePage';
+import OnboardingPage from './pages/onboarding/OnboardingPage';
 
 // Dashboard Pages
 import DashboardOverview from './pages/DashboardOverview';
@@ -194,6 +196,13 @@ function MainAppRouter() {
     }
     if (currentRoute === '/forgot-password' || currentRoute === '/auth/forgot-password') {
       return <ForgotPasswordPage />;
+    }
+    if (currentRoute === '/verify-phone') {
+      return <VerifyPhonePage />;
+    }
+    if (currentRoute === '/onboarding') {
+      if (!currentUser) return <LoginPage />;
+      return <OnboardingPage />;
     }
 
     // 3. Authenticated Unified Dashboard routes

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { auth as authApi } from '../lib/api.js';
 
 const AppContext = createContext(null);
 
@@ -204,68 +205,72 @@ export function AppProvider({ children }) {
     }, 4500);
   };
 
-  // Initial user fetch
+  // Initial user fetch — check real session via cookie
   useEffect(() => {
-    // Ensure fresh start without hardcoded default
-    const storedUserId = localStorage.getItem('terratills_active_user');
-    if (storedUserId) {
-      fetch('/api/auth/me', {
-        headers: { 'x-user-id': storedUserId }
-      })
-        .then(r => {
-          if (!r.ok) throw new Error('Unauthenticated');
-          return r.json();
-        })
-        .then(data => {
-          if (data.user) {
-            setCurrentUser(data.user);
-          } else {
-            localStorage.removeItem('terratills_active_user');
-            setCurrentUser(null);
+    // Clear any legacy localStorage auth
+    localStorage.removeItem('terratills_active_user');
+
+    authApi.me()
+      .then(data => {
+        if (data.user) {
+          setCurrentUser(data.user);
+          // Redirect to onboarding if needed
+          const route = window.location.pathname;
+          if (data.needsOnboarding && route.startsWith('/dashboard')) {
+            syncRoute('/onboarding', new URLSearchParams(), true);
           }
-        })
-        .catch(() => {
-          localStorage.removeItem('terratills_active_user');
+        } else {
           setCurrentUser(null);
-        });
-    } else {
-      setCurrentUser(null);
-    }
+        }
+      })
+      .catch(() => {
+        setCurrentUser(null);
+      });
 
     const initialRoute = window.location.pathname || '/';
     syncRoute(initialRoute, new URLSearchParams(window.location.search), false);
   }, []);
 
-  // Authenticated fetch wrapper
+  // login — called after OTP verify succeeds; user object comes from server
+  const login = (user) => {
+    setCurrentUser(user);
+    showToast(`Welcome back, ${user.display_name || user.phone}! 🌱`, 'success');
+    if (!user.onboarding_completed_at) {
+      navigate('/onboarding');
+    } else {
+      navigate('/dashboard');
+    }
+  };
+
+  // logout — revokes session on server, clears client state
+  const logout = async () => {
+    try {
+      await authApi.logout();
+    } catch {
+      // Ignore errors — clear client state regardless
+    }
+    setCurrentUser(null);
+    showToast('Signed out successfully.', 'info');
+    navigate('/');
+  };
+
+  // Legacy apiFetch wrapper — now uses session cookie, no x-user-id header
   const apiFetch = async (url, options = {}) => {
-    const userId = currentUser ? currentUser.id : localStorage.getItem('terratills_active_user');
-    const headers = {
-      'Content-Type': 'application/json',
-      ...(userId ? { 'x-user-id': userId } : {}),
-      ...options.headers
-    };
-    const response = await fetch(url, { ...options, headers });
+    const response = await fetch(url, {
+      ...options,
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'terratills',
+        ...options.headers,
+      },
+    });
     if (response.status === 401) {
       showToast('Session expired. Please sign in.', 'error');
       setCurrentUser(null);
-      localStorage.removeItem('terratills_active_user');
       navigate('/login');
     }
     return response;
-  };
-
-  const login = (user) => {
-    localStorage.setItem('terratills_active_user', user.id);
-    setCurrentUser(user);
-    showToast(`Welcome, ${user.displayName || user.name}!`, 'success');
-    navigate('/dashboard');
-  };
-
-  const logout = () => {
-    localStorage.removeItem('terratills_active_user');
-    setCurrentUser(null);
-    showToast('Signed out successfully.', 'info');
-    navigate('/login');
   };
 
   return (

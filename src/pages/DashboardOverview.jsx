@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import StatusBadge from '../components/StatusBadge';
 import { LoadingView, ErrorView } from '../components/StateViews';
+import { dashboard as dashboardApi, categories as categoriesApi, listings as listingsApi } from '../lib/api.js';
 
 export default function DashboardOverview() {
-  const { currentUser, navigate, apiFetch, showToast } = useApp();
+  const { currentUser, navigate, showToast } = useApp();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,18 +17,14 @@ export default function DashboardOverview() {
     setLoading(true);
     setError(null);
     try {
-      const [overviewRes, catRes, listingsRes] = await Promise.all([
-        apiFetch('/api/dashboard/overview'),
-        apiFetch('/api/categories'),
-        apiFetch('/api/listings?limit=5'),
+      const [overviewData, catData, listingsData] = await Promise.all([
+        dashboardApi.overview(),
+        categoriesApi.list(),
+        listingsApi.browse({ limit: 5, status: 'active' }),
       ]);
-      if (!overviewRes.ok) throw new Error('Failed to load dashboard overview data');
-      const json = await overviewRes.json();
-      const catJson = await catRes.json();
-      const listingsJson = await listingsRes.json();
-      setData(json);
-      setFeaturedListings(listingsJson.results || []);
-      setCategories(catJson);
+      setData(overviewData);
+      setFeaturedListings(listingsData.listings || []);
+      setCategories(catData.categories || []);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -50,9 +47,11 @@ export default function DashboardOverview() {
   if (error) return <ErrorView error={error} onRetry={fetchOverview} />;
 
   const { metrics, recentBookings, myServices, incomingRequests, recentTransactions } = data || {};
+  // Real API: data.overview contains the stats
+  const overview = data?.overview || {};
 
   // Extract first name only
-  const firstName = (currentUser?.displayName || currentUser?.name || '').split(' ')[0];
+  const firstName = (currentUser?.display_name || currentUser?.displayName || currentUser?.name || currentUser?.phone || 'there').split(' ')[0];
 
   // Category colour map (same as ExploreServices)
   const catColors = {

@@ -1000,11 +1000,6 @@
   "saved_listings": [
     {
       "user_id": "user_1",
-      "listing_id": "list_farmland_01",
-      "saved_at": "2026-10-15T09:00:00Z"
-    },
-    {
-      "user_id": "user_1",
       "listing_id": "list_machinery_02",
       "saved_at": "2026-10-20T11:30:00Z"
     }
