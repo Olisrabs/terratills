@@ -33,8 +33,8 @@ router.patch('/:id/read', requireAuth, async (req: Request, res: Response, next:
   }
 });
 
-// PATCH /api/notifications/read-all — mark all notifications read
-router.patch('/read-all', requireAuth, async (req: Request, res: Response, next: NextFunction) => {
+// Mark all notifications read (PATCH /read-all or POST /mark-all-read)
+async function handleMarkAllRead(req: Request, res: Response, next: NextFunction) {
   try {
     await supabase
       .from('notifications')
@@ -45,6 +45,9 @@ router.patch('/read-all', requireAuth, async (req: Request, res: Response, next:
   } catch (err) {
     next(err);
   }
-});
+}
+
+router.patch('/read-all', requireAuth, handleMarkAllRead);
+router.post('/mark-all-read', requireAuth, handleMarkAllRead);
 
 export default router;

@@ -17,6 +17,7 @@ import messagesRouter from './modules/messages/messages.routes.js';
 import supportRouter from './modules/support/support.routes.js';
 import verificationRouter from './modules/verification/verification.routes.js';
 import dashboardRouter from './modules/dashboard/dashboard.routes.js';
+import serviceRequestsRouter from './modules/service-requests/serviceRequests.routes.js';
 
 export function createApp() {
   const app = express();
@@ -71,7 +72,9 @@ export function createApp() {
   app.use('/api/profile', profileRouter);
   app.use('/api/categories', categoriesRouter);
   app.use('/api/listings', listingsRouter);
+  app.use('/api/services', listingsRouter);
   app.use('/api/bookings', bookingsRouter);
+  app.use('/api/service-requests', serviceRequestsRouter);
   app.use('/api/notifications', notificationsRouter);
   app.use('/api/messages', messagesRouter);
   app.use('/api/support', supportRouter);
