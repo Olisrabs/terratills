@@ -40,7 +40,22 @@ export async function apiFetch(url, options = {}) {
 /** Fetch + parse JSON, throwing ApiError on non-OK response. */
 export async function apiJson(url, options = {}) {
   const res = await apiFetch(url, options);
-  const data = await res.json();
+  const contentType = res.headers.get('content-type') || '';
+  let data;
+  if (contentType.includes('application/json')) {
+    data = await res.json();
+  } else {
+    const text = await res.text();
+    if (!res.ok) {
+      throw new ApiError(
+        res.status,
+        'SERVER_ERROR',
+        `Server returned error ${res.status}. Please make sure the backend server is running.`
+      );
+    }
+    throw new ApiError(res.status, 'INVALID_RESPONSE', 'Invalid response format from server.');
+  }
+
   if (!res.ok) {
     throw new ApiError(res.status, data?.code ?? 'ERROR', data?.error ?? 'Request failed');
   }
