@@ -39,7 +39,7 @@ export default function RegisterPage() {
               <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" />
             </svg>
           </div>
-          <span className="font-extrabold text-2xl tracking-tight text-[#10271B]">
+          <span onClick={() => navigate('/')} className="font-extrabold text-2xl tracking-tight text-[#10271B]">
             Terra<span className="text-[#559B45]">Tills</span>
           </span>
         </div>
@@ -47,9 +47,6 @@ export default function RegisterPage() {
         <h2 className="text-2xl font-extrabold tracking-tight text-[#003D37]">
           Create your account
         </h2>
-        <p className="mt-1 text-xs text-[#10271B]/70 font-medium">
-          Join Nigeria's agricultural services marketplace. No password needed — we verify by phone.
-        </p>
       </div>
 
       {/* Auth Card */}
@@ -127,15 +124,6 @@ export default function RegisterPage() {
               Sign in here
             </button>
           </div>
-        </div>
-
-        <div className="text-center mt-6">
-          <button
-            onClick={() => navigate('/')}
-            className="text-xs text-[#10271B]/70 hover:text-[#003D37] font-semibold"
-          >
-            ← Back to TerraTills Home
-          </button>
         </div>
       </div>
     </div>
