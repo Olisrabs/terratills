@@ -197,10 +197,10 @@ function MainAppRouter() {
     if (currentRoute === '/forgot-password' || currentRoute === '/auth/forgot-password') {
       return <ForgotPasswordPage />;
     }
-    if (currentRoute === '/verify-phone') {
+    if (currentRoute === '/verify-phone' || currentRoute.startsWith('/verify-phone')) {
       return <VerifyPhonePage />;
     }
-    if (currentRoute === '/onboarding') {
+    if (currentRoute === '/onboarding' || currentRoute.startsWith('/onboarding')) {
       if (!currentUser) return <LoginPage />;
       return <OnboardingPage />;
     }

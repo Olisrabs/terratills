@@ -34,14 +34,25 @@ export function AppProvider({ children }) {
   }, []);
 
   // Sync route parser
-  const syncRoute = (path, searchParams = new URLSearchParams(), pushHistory = true) => {
+  const syncRoute = (rawPath, searchParams = new URLSearchParams(), pushHistory = true) => {
+    let path = rawPath;
+    let query = new URLSearchParams(searchParams);
+
+    // If query parameters are embedded in the path (e.g. /verify-phone?phone=...), separate them
+    if (path.includes('?')) {
+      const [cleanPath, qs] = path.split('?');
+      path = cleanPath;
+      const embeddedParams = new URLSearchParams(qs);
+      embeddedParams.forEach((val, key) => query.set(key, val));
+    }
+
     if (pushHistory) {
-      const searchStr = searchParams.toString();
+      const searchStr = query.toString();
       const url = searchStr ? `${path}?${searchStr}` : path;
       window.history.pushState({}, '', url);
     }
 
-    setRouteQuery(searchParams);
+    setRouteQuery(query);
 
     // Parameter extraction:
     // e.g. /dashboard/explore/category/:slug

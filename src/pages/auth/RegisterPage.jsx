@@ -13,8 +13,12 @@ export default function RegisterPage() {
     setLoading(true);
     setError(null);
     try {
-      await authApi.sendOtp(phone.trim(), 'register');
-      navigate(`/verify-phone?phone=${encodeURIComponent(phone.trim())}&purpose=register`);
+      const res = await authApi.sendOtp(phone.trim(), 'register');
+      navigate('/verify-phone', {
+        phone: phone.trim(),
+        purpose: 'register',
+        ...(res?.devCode ? { devCode: res.devCode } : {})
+      });
     } catch (err) {
       setError(err.message);
     } finally {

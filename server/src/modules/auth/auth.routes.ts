@@ -23,8 +23,15 @@ function setSessionCookie(res: Response, token: string): void {
 router.post('/otp/send', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { phone, purpose } = sendOtpSchema.parse(req.body);
-    await authService.sendOtp(phone, purpose, req.ip);
-    res.json({ success: true, message: 'Verification code sent to your phone.' });
+    const { otp } = await authService.sendOtp(phone, purpose, req.ip);
+    const payload: Record<string, unknown> = {
+      success: true,
+      message: 'Verification code sent to your phone.',
+    };
+    if (env.NODE_ENV !== 'production') {
+      payload.devCode = otp;
+    }
+    res.json(payload);
   } catch (err) {
     next(err);
   }

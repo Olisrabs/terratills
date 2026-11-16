@@ -31,7 +31,7 @@ export async function sendOtp(
   rawPhone: string,
   purpose: 'register' | 'login' | 'recovery',
   ip?: string
-): Promise<void> {
+): Promise<{ otp: string }> {
   const phone = normalizePhone(rawPhone);
   if (!phone) {
     throw badRequest(
@@ -76,6 +76,7 @@ export async function sendOtp(
   if (error) throw new Error(`Failed to store OTP: ${error.message}`);
 
   dispatchOtp(phone, otp);
+  return { otp };
 }
 
 export async function verifyOtp(

@@ -4,10 +4,13 @@ import { auth as authApi } from '../../lib/api.js';
 
 export default function VerifyPhonePage() {
   const { navigate, login, showToast, routeQuery } = useApp();
-  const phone = routeQuery?.get('phone') || '';
-  const purpose = routeQuery?.get('purpose') || 'login';
+  const searchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
+  const phone = routeQuery?.get('phone') || searchParams?.get('phone') || '';
+  const purpose = routeQuery?.get('purpose') || searchParams?.get('purpose') || 'login';
+  const initialDevCode = routeQuery?.get('devCode') || searchParams?.get('devCode') || '';
 
   const [code, setCode] = useState(['', '', '', '', '', '']);
+  const [currentDevCode, setCurrentDevCode] = useState(initialDevCode);
   const [loading, setLoading] = useState(false);
   const [resendLoading, setResendLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -77,9 +80,10 @@ export default function VerifyPhonePage() {
     setResendLoading(true);
     setError(null);
     try {
-      await authApi.sendOtp(phone, purpose);
+      const res = await authApi.sendOtp(phone, purpose);
       setCountdown(60);
       setCode(['', '', '', '', '', '']);
+      if (res?.devCode) setCurrentDevCode(res.devCode);
       inputRefs.current[0]?.focus();
       showToast('New code sent to your phone.', 'success');
     } catch (err) {
@@ -129,6 +133,26 @@ export default function VerifyPhonePage() {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-10 px-6 shadow-sm rounded-2xl border border-slate-100 sm:px-10">
+
+          {currentDevCode && (
+            <div className="mb-5 p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-amber-900 text-xs flex items-center justify-between">
+              <div>
+                <span className="font-semibold block">Development Test Code:</span>
+                <span className="font-mono text-base font-bold tracking-widest text-[#003D37]">{currentDevCode}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  const digits = currentDevCode.split('').slice(0, 6);
+                  setCode(digits);
+                  handleVerify(currentDevCode);
+                }}
+                className="px-2.5 py-1.5 bg-[#003D37] text-white rounded-lg text-xs font-semibold hover:bg-[#003D37]/90 transition"
+              >
+                Auto-fill
+              </button>
+            </div>
+          )}
 
           {error && (
             <div className="mb-5 p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 text-sm text-center">

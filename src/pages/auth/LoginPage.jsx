@@ -13,8 +13,12 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
     try {
-      await authApi.sendOtp(phone.trim(), 'login');
-      navigate(`/verify-phone?phone=${encodeURIComponent(phone.trim())}&purpose=login`);
+      const res = await authApi.sendOtp(phone.trim(), 'login');
+      navigate('/verify-phone', {
+        phone: phone.trim(),
+        purpose: 'login',
+        ...(res?.devCode ? { devCode: res.devCode } : {})
+      });
     } catch (err) {
       setError(err.message);
     } finally {
