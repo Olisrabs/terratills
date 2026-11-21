@@ -22,23 +22,16 @@ export default function LandingNavbar() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#E4EFDF] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
-        {/* Brand Logo: Charcoal #10271B / Deep Teal #003D37 + Green #559B45 */}
+        {/* Brand Logo */}
         <div 
           onClick={() => navigate('/')} 
-          className="flex items-center space-x-2.5 cursor-pointer select-none group"
+          className="flex items-center cursor-pointer select-none"
         >
-          {/* Starburst geometric icon in Deep Teal #003D37 */}
-          <div className="w-8 h-8 flex items-center justify-center text-[#003D37] group-hover:rotate-45 transition duration-300">
-            <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
-              <line x1="12" y1="2" x2="12" y2="22" />
-              <line x1="2" y1="12" x2="22" y2="12" />
-              <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-              <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" />
-            </svg>
-          </div>
-          <span className="font-extrabold text-xl tracking-tight text-[#10271B] font-sans">
-            Terra<span className="text-[#559B45]">Tills</span>
-          </span>
+          <img
+            src="/Terratills_black.png"
+            alt="TerraTills"
+            className="h-10 w-auto object-contain"
+          />
         </div>
 
         {/* Center Floating Pill Navigation: Soft Sage border/bg, Deep Teal active */}

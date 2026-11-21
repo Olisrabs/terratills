@@ -120,19 +120,13 @@ export default function Sidebar({ isOpen, onClose }) {
           <div className="flex items-center justify-between mb-3">
             <div
               onClick={() => handleNav('/dashboard')}
-              className="flex items-center space-x-2.5 cursor-pointer select-none"
+              className="cursor-pointer select-none"
             >
-              <div className="w-8 h-8 rounded-xl bg-[#FFC900] text-[#10271B] flex items-center justify-center font-black text-sm shadow-card">
-                TT
-              </div>
-              <div>
-                <span className="font-extrabold text-base tracking-tight text-white block leading-none">
-                  Terra<span className="text-[#FFC900]">Tills</span>
-                </span>
-                <span className="text-[10px] text-[#E4EFDF]/80 font-medium tracking-wide uppercase">
-                  Nigeria Marketplace
-                </span>
-              </div>
+              <img
+                src="/Terratills_white.png"
+                alt="TerraTills"
+                className="h-8 w-auto object-contain"
+              />
             </div>
 
             {/* Mobile close */}

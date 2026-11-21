@@ -16,19 +16,13 @@ export default function LandingFooter() {
           <div className="lg:col-span-2 space-y-4">
             <div 
               onClick={() => navigate('/')} 
-              className="flex items-center space-x-2.5 cursor-pointer select-none group"
+              className="cursor-pointer select-none"
             >
-              <div className="w-8 h-8 flex items-center justify-center text-[#FFC900] group-hover:rotate-45 transition duration-300">
-                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
-                  <line x1="12" y1="2" x2="12" y2="22" />
-                  <line x1="2" y1="12" x2="22" y2="12" />
-                  <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-                  <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" />
-                </svg>
-              </div>
-              <span className="font-extrabold text-xl tracking-tight text-white font-sans">
-                Terra<span className="text-[#FFC900]">Tills</span>
-              </span>
+              <img
+                src="/Terratills_white.png"
+                alt="TerraTills"
+                className="h-10 w-auto object-contain"
+              />
             </div>
 
             <p className="text-[#E4EFDF]/80 text-xs leading-relaxed max-w-sm">
