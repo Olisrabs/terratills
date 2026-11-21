@@ -42,7 +42,7 @@ async function testBach() {
   const session = await bachAdapter.createPaymentSession({
     bookingId: 'BK-TEST-001',
     amount: 150000,
-    customerEmail: 'test@terratills.ng',
+    customerEmail: 'test@terratills.com',
     customerName: 'Test Farmer',
     idempotencyKey: 'IDEMP-TEST-99'
   });

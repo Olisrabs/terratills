@@ -1,4 +1,5 @@
 import React from 'react';
+import { Check } from 'lucide-react';
 import LandingNavbar from '../../components/public/LandingNavbar';
 import LandingFooter from '../../components/public/LandingFooter';
 import { useApp } from '../../context/AppContext';
@@ -43,7 +44,9 @@ export default function PricingPage() {
                 </p>
               </div>
               <div className="pt-6 border-t border-[#E4EFDF] mt-6">
-                <span className="text-xs font-bold text-[#559B45] bg-[#559B45]/10 px-3 py-1 rounded-full">✓ Free Account & Search</span>
+                <span className="text-xs font-bold text-[#559B45] bg-[#559B45]/10 px-3 py-1 rounded-full inline-flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5" /> Free Account & Search
+                </span>
               </div>
             </div>
 
@@ -64,7 +67,9 @@ export default function PricingPage() {
                 </p>
               </div>
               <div className="pt-6 border-t border-white/15 mt-6 relative z-10">
-                <span className="text-xs font-semibold text-[#FFC900]">✓ Instant Payout to Nigerian Bank Accounts</span>
+                <span className="text-xs font-semibold text-[#FFC900] inline-flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5" /> Instant Payout to Nigerian Bank Accounts
+                </span>
               </div>
 
               {/* Decorative green glow */}
@@ -85,7 +90,9 @@ export default function PricingPage() {
                 </p>
               </div>
               <div className="pt-6 border-t border-[#E4EFDF] mt-6">
-                <span className="text-xs font-bold text-[#559B45] bg-[#559B45]/10 px-3 py-1 rounded-full">✓ Level 2 Identity Standard</span>
+                <span className="text-xs font-bold text-[#559B45] bg-[#559B45]/10 px-3 py-1 rounded-full inline-flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5" /> Level 2 Identity Standard
+                </span>
               </div>
             </div>
 

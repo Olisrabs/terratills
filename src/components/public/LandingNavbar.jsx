@@ -61,19 +61,21 @@ export default function LandingNavbar() {
           })}
         </nav>
 
-        {/* Right Action Buttons: Harvest Gold #FFC900 CTA */}
+        {/* Right Action Buttons */}
         <div className="hidden sm:flex items-center space-x-3">
-          {currentUser ? (
+          {currentUser && (
             <>
               <button
                 onClick={() => navigate('/dashboard')}
                 className="px-4 py-2 text-xs font-bold text-[#10271B] hover:text-[#003D37] transition flex items-center space-x-2"
               >
-                <img 
-                  src={currentUser.avatar} 
-                  alt={currentUser.name} 
-                  className="w-6 h-6 rounded-full object-cover border border-[#E4EFDF]" 
-                />
+                {currentUser.avatar && (
+                  <img 
+                    src={currentUser.avatar} 
+                    alt={currentUser.name || 'User'} 
+                    className="w-6 h-6 rounded-full object-cover border border-[#E4EFDF]" 
+                  />
+                )}
                 <span className="hidden lg:inline">Dashboard</span>
               </button>
               <button
@@ -81,21 +83,6 @@ export default function LandingNavbar() {
                 className="bg-[#E4EFDF] hover:bg-[#d5e7d0] text-[#003D37] font-semibold text-xs px-4 py-2 rounded-full transition"
               >
                 Sign Out
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                onClick={() => navigate('/login')}
-                className="px-5 py-2.5 text-xs font-bold text-[#10271B] hover:text-[#003D37] transition"
-              >
-                Login
-              </button>
-              <button
-                onClick={() => navigate('/signup')}
-                className="bg-[#FFC900] hover:bg-[#F2BE00] text-[#10271B] font-bold text-xs px-6 py-2.5 rounded-full transition shadow-xs hover:shadow-sm transform active:scale-95 cursor-pointer"
-              >
-                Sign Up
               </button>
             </>
           )}
@@ -160,28 +147,7 @@ export default function LandingNavbar() {
                   Sign Out
                 </button>
               </>
-            ) : (
-              <>
-                <button
-                  onClick={() => {
-                    navigate('/login');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="w-full py-2.5 text-center text-sm font-semibold text-[#10271B] bg-[#E4EFDF]/70 rounded-xl"
-                >
-                  Login
-                </button>
-                <button
-                  onClick={() => {
-                    navigate('/signup');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="w-full py-2.5 text-center text-sm font-bold bg-[#FFC900] text-[#10271B] rounded-xl shadow-xs"
-                >
-                  Sign Up
-                </button>
-              </>
-            )}
+            ) : null}
           </div>
         </div>
       )}

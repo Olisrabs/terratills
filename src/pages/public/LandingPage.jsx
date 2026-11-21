@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Lightbulb, Eye, Sprout } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import LandingNavbar from '../../components/public/LandingNavbar';
 import LandingFooter from '../../components/public/LandingFooter';
@@ -152,15 +153,15 @@ export default function LandingPage() {
             </div>
             <div className="md:text-right">
               <span className="text-[11px] font-bold text-[#003D37] block uppercase tracking-wider mb-0.5">Contact Info</span>
-              <p className="text-[#10271B] font-medium">Email — <a href="mailto:hello@terratills.ng" className="hover:underline text-[#003D37] font-semibold">hello@terratills.ng</a></p>
-              <p className="text-[#10271B] font-medium">Phone — <span className="font-semibold">+234 (0) 800 83772</span></p>
+              <p className="text-[#10271B] font-medium">Email: <a href="mailto:hello@terratills.com" className="hover:underline text-[#003D37] font-semibold">hello@terratills.com</a></p>
+              <p className="text-[#10271B] font-medium">Phone: <span className="font-semibold">+234 (0) 800 83772</span></p>
             </div>
           </div>
 
           {/* Minimal line icons above landscape matching reference image */}
           <div className="flex justify-between max-w-4xl mx-auto px-8 mb-2 text-[#003D37] text-sm relative z-10">
-            <span className="opacity-70">💡</span>
-            <span className="opacity-70">👁️</span>
+            <Lightbulb className="w-4 h-4 opacity-70" />
+            <Eye className="w-4 h-4 opacity-70" />
           </div>
 
           {/* Hero Panorama Landscape Banner with Green Border & Aura */}
@@ -179,8 +180,9 @@ export default function LandingPage() {
               <span>Verified Farmlands & Mechanization Network</span>
             </div>
 
-            <div className="absolute bottom-5 right-6 hidden sm:flex items-center space-x-2 text-xs font-bold text-[#10271B] bg-[#FFC900] px-3.5 py-1.5 rounded-full shadow-sm">
-              <span>🌾 36 Nigerian States</span>
+            <div className="absolute bottom-5 right-6 hidden sm:flex items-center space-x-1.5 text-xs font-bold text-[#10271B] bg-[#FFC900] px-3.5 py-1.5 rounded-full shadow-sm">
+              <Sprout className="w-3.5 h-3.5 text-[#003D37]" />
+              <span>36 Nigerian States</span>
             </div>
           </div>
         </section>

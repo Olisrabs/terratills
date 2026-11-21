@@ -220,7 +220,7 @@ function MainAppRouter() {
 
   return (
     <div className="min-h-screen bg-[#F7F9F8] text-slate-800 flex flex-col font-sans antialiased">
-      {isOffline && <OfflineView />}
+      {isOffline && currentRoute.startsWith('/dashboard') && <OfflineView />}
       {renderCurrentView()}
     </div>
   );

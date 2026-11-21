@@ -1,4 +1,5 @@
 import React from 'react';
+import { Mail, Bot } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
 export default function LandingFooter() {
@@ -35,7 +36,7 @@ export default function LandingFooter() {
             </p>
 
             <div className="pt-2 text-[#E4EFDF]/70 space-y-1.5">
-              <p>✉️ Direct Inquiries: <span className="text-white font-semibold">support@terratills.com</span></p>
+              <p className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-[#FFC900]" /> Direct Inquiries: <span className="text-white font-semibold">support@terratills.com</span></p>
             </div>
           </div>
 
@@ -128,11 +129,11 @@ export default function LandingFooter() {
                   Contact Support Desk
                 </button>
               </li>
-              <li>
+              {/* <li>
                 <button onClick={() => navigate('/dashboard/assistant')} className="text-[#559B45] font-semibold hover:text-[#FFC900] transition flex items-center space-x-1">
-                  <span>🤖</span> <span>Ask Agro AI</span>
+                  <Bot className="w-4 h-4" /> <span>Ask Agro AI</span>
                 </button>
-              </li>
+              </li> */}
             </ul>
           </div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { UserCheck, Lock, ShieldCheck, Handshake } from 'lucide-react';
 import LandingNavbar from '../../components/public/LandingNavbar';
 import LandingFooter from '../../components/public/LandingFooter';
 import { useApp } from '../../context/AppContext';
@@ -77,27 +78,29 @@ export default function AboutPage() {
               {
                 title: 'Unified Account Model',
                 desc: 'One identity allows you to lease land, hire equipment, or offer your own services without conflicting profile switches.',
-                icon: '👤'
+                icon: UserCheck
               },
               {
                 title: 'No Fabricated Escrow',
                 desc: 'Payments are handled transparently via Bach with server-side validation. We never simulate financial outcomes.',
-                icon: '🔒'
+                icon: Lock
               },
               {
                 title: 'Objective Verification',
                 desc: 'Farmland GPS titles, operator certifications, and identity proofs are vetted before listings earn verified status.',
-                icon: '🛡️'
+                icon: ShieldCheck
               },
               {
                 title: 'Dual Confirmation Clearing',
                 desc: 'Both hirer and provider confirm task completion on-site before payout authorization is triggered.',
-                icon: '🤝'
+                icon: Handshake
               }
             ].map((p, i) => (
               <div key={i} className="bg-white rounded-3xl p-6 border border-[#E4EFDF] shadow-xs flex flex-col justify-between">
                 <div>
-                  <span className="text-3xl mb-4 block">{p.icon}</span>
+                  <div className="w-10 h-10 rounded-xl bg-[#E4EFDF]/80 text-[#003D37] flex items-center justify-center mb-4">
+                    <p.icon className="w-5 h-5" />
+                  </div>
                   <h3 className="text-base font-bold text-[#003D37] mb-2">{p.title}</h3>
                   <p className="text-xs text-[#10271B]/70 leading-relaxed font-medium">{p.desc}</p>
                 </div>

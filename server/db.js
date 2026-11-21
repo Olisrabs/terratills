@@ -90,7 +90,7 @@ class Database {
           id: 'user_1',
           name: 'Alhaji Musa Danladi',
           displayName: 'Musa Danladi',
-          email: 'musa.danladi@terratills.ng',
+          email: 'musa.danladi@terratills.com',
           phone: '+234 803 456 7890',
           role: 'user', // Unified account
           avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',

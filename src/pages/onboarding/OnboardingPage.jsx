@@ -45,7 +45,7 @@ export default function OnboardingPage() {
       });
       // Update context with the new user data
       login({ ...currentUser, ...profile });
-      showToast('Welcome to TerraTills! 🌱', 'success');
+      showToast('Welcome to TerraTills!', 'success');
       navigate('/dashboard');
     } catch (err) {
       setError(err.message);
@@ -163,7 +163,7 @@ export default function OnboardingPage() {
                   </svg>
                 </div>
                 <h2 className="text-xl font-bold text-[#10271B]">Add your email</h2>
-                <p className="text-sm text-slate-500 mt-1">Optional — used for receipts and important updates</p>
+                <p className="text-sm text-slate-500 mt-1">Optional: used for receipts and important updates</p>
               </div>
 
               <div>
@@ -262,7 +262,7 @@ export default function OnboardingPage() {
                     </svg>
                     Setting up…
                   </>
-                ) : '🌱 Get Started'}
+                ) : 'Get Started'}
               </button>
             )}
           </div>

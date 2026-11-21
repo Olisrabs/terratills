@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { MapPin, Phone, Mail, Check } from 'lucide-react';
 import LandingNavbar from '../../components/public/LandingNavbar';
 import LandingFooter from '../../components/public/LandingFooter';
 import { useApp } from '../../context/AppContext';
@@ -52,8 +53,8 @@ export default function ContactPage() {
             <div className="lg:col-span-7 bg-[#E4EFDF]/40 rounded-3xl p-6 sm:p-10 border border-[#E4EFDF] shadow-xs">
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
-                  <div className="w-16 h-16 bg-[#FFC900] text-[#10271B] rounded-full flex items-center justify-center mx-auto text-2xl shadow-xs font-bold">
-                    ✓
+                  <div className="w-16 h-16 bg-[#FFC900] text-[#10271B] rounded-full flex items-center justify-center mx-auto shadow-xs">
+                    <Check className="w-8 h-8 stroke-[3]" />
                   </div>
                   <h3 className="text-xl font-bold text-[#003D37]">Inquiry Received</h3>
                   <p className="text-xs text-[#10271B]/80 max-w-md mx-auto leading-relaxed font-medium">
@@ -154,31 +155,31 @@ export default function ContactPage() {
                 <h3 className="text-base font-bold text-[#003D37]">Field Operations Desk</h3>
                 <div className="space-y-3 text-xs text-[#10271B]/80 font-medium">
                   <div className="flex items-start space-x-3">
-                    <span className="text-base">📍</span>
+                    <MapPin className="w-4 h-4 text-[#559B45] shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-[#003D37]">Northern Agro Corridor</strong>
                       <p>Ali Akilu Road, Kaduna State, Nigeria</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <span className="text-base">📍</span>
+                    <MapPin className="w-4 h-4 text-[#559B45] shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-[#003D37]">Southwest Food Belt</strong>
                       <p>Bodija Agricultural Precinct, Ibadan, Oyo State</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <span className="text-base">📞</span>
+                    <Phone className="w-4 h-4 text-[#559B45] shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-[#003D37]">Direct Hotline</strong>
                       <p>+234 (0) 800 83772 (Toll-Free, Mon–Sat 7am–7pm)</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <span className="text-base">✉️</span>
+                    <Mail className="w-4 h-4 text-[#559B45] shrink-0 mt-0.5" />
                     <div>
                       <strong className="block text-[#003D37]">Email Operations</strong>
-                      <p>hello@terratills.ng</p>
+                      <p>hello@terratills.com</p>
                     </div>
                   </div>
                 </div>

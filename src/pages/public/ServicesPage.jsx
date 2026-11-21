@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Sprout, Tractor, Users, GraduationCap, Check } from 'lucide-react';
 import LandingNavbar from '../../components/public/LandingNavbar';
 import LandingFooter from '../../components/public/LandingFooter';
 import { useApp } from '../../context/AppContext';
@@ -11,7 +12,7 @@ export default function ServicesPage() {
     {
       id: 'farmland',
       title: 'Farmland Leasing',
-      icon: '🌾',
+      icon: Sprout,
       badge: 'Verified Parcels',
       heroImage: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800',
       description: 'Access arable, validated agricultural lands for short-term and multi-year leases across Nigeria. Complete with surveyor boundary data and customary approvals.',
@@ -26,7 +27,7 @@ export default function ServicesPage() {
     {
       id: 'machinery',
       title: 'Machinery & Tractor Rental',
-      icon: '🚜',
+      icon: Tractor,
       badge: 'Certified Fleets',
       heroImage: 'https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&q=80&w=800',
       description: 'Deploy 55HP to 110HP tractors, combine harvesters, disc ploughs, boom sprayers, and de-stoners on daily or hectare-based rates with vetted operators.',
@@ -41,7 +42,7 @@ export default function ServicesPage() {
     {
       id: 'labour',
       title: 'Farm Labour Crews',
-      icon: '👥',
+      icon: Users,
       badge: 'Organized Squads',
       heroImage: 'https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&q=80&w=800',
       description: 'Hire organized 5 to 20-person crews for land preparation, manual weeding, cassava uprooting, yam ridge moulding, and grain harvesting on structured terms.',
@@ -56,7 +57,7 @@ export default function ServicesPage() {
     {
       id: 'training',
       title: 'Agronomy Training & Tutorials',
-      icon: '🎓',
+      icon: GraduationCap,
       badge: 'Field Masterclasses',
       heroImage: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&q=80&w=800',
       description: 'Field-tested practical agricultural tutorials and hands-on masterclasses covering export commodity handling, soil amendment, drip irrigation, and post-harvest preservation.',
@@ -95,22 +96,23 @@ export default function ServicesPage() {
           {/* Category Filter Pills */}
           <div className="mt-8 flex flex-wrap justify-center gap-2">
             {[
-              { id: 'all', label: 'All Services' },
-              { id: 'farmland', label: '🌾 Farmland' },
-              { id: 'machinery', label: '🚜 Machinery' },
-              { id: 'labour', label: '👥 Labour Crews' },
-              { id: 'training', label: '🎓 Training' },
+              { id: 'all', label: 'All Services', icon: null },
+              { id: 'farmland', label: 'Farmland', icon: Sprout },
+              { id: 'machinery', label: 'Machinery', icon: Tractor },
+              { id: 'labour', label: 'Labour Crews', icon: Users },
+              { id: 'training', label: 'Training', icon: GraduationCap },
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id)}
-                className={`px-5 py-2.5 rounded-full text-xs font-bold transition shadow-xs cursor-pointer ${
+                className={`px-5 py-2.5 rounded-full text-xs font-bold transition shadow-xs cursor-pointer flex items-center space-x-1.5 ${
                   activeCategory === tab.id
                     ? 'bg-[#003D37] text-white'
                     : 'bg-[#E4EFDF]/70 text-[#10271B] hover:bg-[#E4EFDF]'
                 }`}
               >
-                {tab.label}
+                {tab.icon && <tab.icon className="w-3.5 h-3.5" />}
+                <span>{tab.label}</span>
               </button>
             ))}
           </div>
@@ -136,8 +138,10 @@ export default function ServicesPage() {
                     </span>
                   </div>
 
-                  <div className="flex items-center space-x-2 text-xl mb-1">
-                    <span>{cat.icon}</span>
+                  <div className="flex items-center space-x-2.5 mb-1">
+                    <div className="w-8 h-8 rounded-lg bg-[#E4EFDF] flex items-center justify-center text-[#003D37]">
+                      <cat.icon className="w-4 h-4" />
+                    </div>
                     <h3 className="text-xl font-extrabold text-[#003D37]">{cat.title}</h3>
                   </div>
 
@@ -161,7 +165,7 @@ export default function ServicesPage() {
                     <ul className="space-y-2">
                       {cat.features.map((feat, idx) => (
                         <li key={idx} className="flex items-start space-x-2 text-xs text-[#10271B]/80 font-medium">
-                          <span className="text-[#559B45] font-bold">✓</span>
+                          <Check className="w-3.5 h-3.5 text-[#559B45] shrink-0 mt-0.5" />
                           <span>{feat}</span>
                         </li>
                       ))}

@@ -121,7 +121,7 @@ export default function ForgotPasswordPage() {
                   value={emailOrPhone}
                   onChange={(e) => setEmailOrPhone(e.target.value)}
                   required
-                  placeholder="e.g. musa.danladi@terratills.ng"
+                  placeholder="e.g. musa.danladi@terratills.com"
                   className="w-full bg-[#E4EFDF]/30 border border-[#E4EFDF] rounded-xl p-3 text-xs focus:outline-none focus:ring-2 focus:ring-[#559B45] text-[#10271B] font-medium"
                 />
               </div>

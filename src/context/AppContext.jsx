@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { AlertCircle, Info, CheckCircle2 } from 'lucide-react';
 import { auth as authApi } from '../lib/api.js';
 
 const AppContext = createContext(null);
@@ -245,7 +246,7 @@ export function AppProvider({ children }) {
   // login — called after OTP verify succeeds; user object comes from server
   const login = (user) => {
     setCurrentUser(user);
-    showToast(`Welcome back, ${user.display_name || user.phone}! 🌱`, 'success');
+    showToast(`Welcome back, ${user.display_name || user.phone}!`, 'success');
     if (!user.onboarding_completed_at) {
       navigate('/onboarding');
     } else {
@@ -277,9 +278,11 @@ export function AppProvider({ children }) {
       },
     });
     if (response.status === 401) {
-      showToast('Session expired. Please sign in.', 'error');
-      setCurrentUser(null);
-      navigate('/login');
+      if (window.location.pathname.startsWith('/dashboard')) {
+        showToast('Session expired. Please sign in.', 'error');
+        setCurrentUser(null);
+        navigate('/login');
+      }
     }
     return response;
   };
@@ -315,7 +318,15 @@ export function AppProvider({ children }) {
                 : 'bg-forest text-white'
             }`}
           >
-            <span>{t.type === 'error' ? '⚠️' : t.type === 'info' ? 'ℹ️' : '🌿'}</span>
+            <span>
+              {t.type === 'error' ? (
+                <AlertCircle className="w-4 h-4 shrink-0" />
+              ) : t.type === 'info' ? (
+                <Info className="w-4 h-4 shrink-0" />
+              ) : (
+                <CheckCircle2 className="w-4 h-4 shrink-0" />
+              )}
+            </span>
             <span>{t.message}</span>
           </div>
         ))}

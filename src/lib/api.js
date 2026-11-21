@@ -28,7 +28,7 @@ export async function apiFetch(url, options = {}) {
 
   if (response.status === 401) {
     const currentPath = window.location.pathname;
-    if (!currentPath.startsWith('/login') && !currentPath.startsWith('/register')) {
+    if (currentPath.startsWith('/dashboard')) {
       window.location.href = `/login?next=${encodeURIComponent(currentPath)}`;
     }
     throw new ApiError(401, 'UNAUTHORIZED', 'Session expired. Please sign in.');
